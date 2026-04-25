@@ -21,45 +21,99 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* Background Glow */
+/* Animated background */
 body::before{
 content:"";
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at 20% 20%,#00ffff22,transparent 25%),
-radial-gradient(circle at 80% 30%,#ffd70022,transparent 25%),
-radial-gradient(circle at 50% 80%,#00ffff15,transparent 25%);
+radial-gradient(circle at 15% 20%,#00ffff22,transparent 25%),
+radial-gradient(circle at 85% 25%,#ffd70022,transparent 25%),
+radial-gradient(circle at 50% 85%,#00ffff18,transparent 25%);
 animation:bgmove 10s infinite alternate;
-z-index:-2;
+z-index:-3;
 }
 
 @keyframes bgmove{
 from{transform:scale(1);}
-to{transform:scale(1.12);}
+to{transform:scale(1.15);}
 }
 
-/* Floating dots */
-.dot{
+/* Floating particles */
+.particle{
 position:fixed;
 width:4px;
 height:4px;
 background:#00ffff;
 border-radius:50%;
-opacity:.4;
+opacity:.45;
 animation:float 12s linear infinite;
-z-index:-1;
+z-index:-2;
 }
 
 @keyframes float{
-from{transform:translateY(100vh);}
+from{transform:translateY(110vh);}
 to{transform:translateY(-10vh);}
 }
 
-/* Sections */
+/* Common */
 section{
 padding:95px 20px;
 text-align:center;
+}
+
+.title{
+font-size:2.4rem;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.sub{
+max-width:900px;
+margin:auto;
+line-height:1.9;
+color:#aaa;
+}
+
+.quote{
+margin-top:25px;
+font-size:1.2rem;
+font-weight:700;
+color:#ffd700;
+}
+
+.btn{
+display:inline-block;
+margin-top:28px;
+padding:15px 34px;
+border:none;
+border-radius:40px;
+background:linear-gradient(45deg,#00ffff,#ffd700);
+color:#000;
+font-weight:800;
+cursor:pointer;
+text-decoration:none;
+box-shadow:0 0 18px #00ffff55;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.music{
+position:fixed;
+top:20px;
+right:20px;
+padding:10px 18px;
+border:none;
+border-radius:25px;
+background:#111;
+color:#00ffff;
+font-weight:700;
+cursor:pointer;
+z-index:999;
+box-shadow:0 0 15px #00ffff44;
 }
 
 /* Hero */
@@ -82,64 +136,15 @@ margin-bottom:15px;
 
 .hero h2{
 font-size:1.2rem;
-color:#ddd;
-margin-bottom:22px;
 min-height:35px;
+color:#ddd;
+margin-bottom:20px;
 }
 
 .hero p{
 max-width:850px;
 line-height:1.9;
 color:#bbb;
-}
-
-/* Buttons */
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:15px 34px;
-border-radius:40px;
-background:linear-gradient(45deg,#00ffff,#ffd700);
-color:#000;
-font-weight:800;
-text-decoration:none;
-box-shadow:0 0 20px #00ffff66;
-transition:.3s;
-border:none;
-cursor:pointer;
-}
-
-.btn:hover{
-transform:scale(1.05);
-}
-
-.music{
-position:fixed;
-top:20px;
-right:20px;
-padding:10px 18px;
-border:none;
-border-radius:25px;
-background:#111;
-color:#00ffff;
-font-weight:700;
-cursor:pointer;
-z-index:100;
-box-shadow:0 0 15px #00ffff44;
-}
-
-/* Titles */
-.title{
-font-size:2.4rem;
-font-weight:900;
-margin-bottom:15px;
-}
-
-.sub{
-max-width:900px;
-margin:auto;
-line-height:1.9;
-color:#aaa;
 }
 
 /* Cards */
@@ -163,7 +168,7 @@ transition:.3s;
 
 .card:hover{
 transform:translateY(-8px);
-box-shadow:0 0 28px #00ffff44;
+box-shadow:0 0 30px #00ffff44;
 }
 
 .card img{
@@ -182,7 +187,6 @@ margin-bottom:10px;
 .card p{
 color:#bbb;
 line-height:1.8;
-font-size:.95rem;
 }
 
 /* Timeline */
@@ -196,7 +200,7 @@ text-align:left;
 .step{
 background:#111;
 padding:25px;
-margin-bottom:20px;
+margin-bottom:18px;
 border-left:5px solid #00ffff;
 border-radius:12px;
 box-shadow:0 0 18px #00ffff18;
@@ -208,15 +212,12 @@ margin-bottom:10px;
 }
 
 /* Speedometer */
-.speedBox{
-max-width:700px;
-margin:auto;
-margin-top:25px;
-}
-
 .speedBar{
 width:100%;
-height:25px;
+max-width:720px;
+height:24px;
+margin:auto;
+margin-top:20px;
 background:#111;
 border-radius:30px;
 overflow:hidden;
@@ -226,23 +227,15 @@ overflow:hidden;
 height:100%;
 width:0%;
 background:linear-gradient(90deg,#00ffff,#ffd700);
-animation:speedLoad 4s forwards;
+animation:load 4s forwards;
 }
 
-@keyframes speedLoad{
+@keyframes load{
 from{width:0;}
 to{width:96%;}
 }
 
-/* Quotes */
-.quote{
-margin-top:25px;
-font-size:1.2rem;
-font-weight:700;
-color:#ffd700;
-}
-
-/* Game Screen */
+/* Intro Game */
 #gameScreen{
 position:fixed;
 inset:0;
@@ -252,47 +245,63 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 z-index:9999;
-text-align:center;
 padding:20px;
-transition:.7s;
+text-align:center;
+transition:.8s;
 }
 
 #gameScreen h1{
 font-size:2.4rem;
 color:#00ffff;
 margin-bottom:15px;
-text-shadow:0 0 15px #00ffff;
 }
 
-#gameScreen p{
+#raceText{
 color:#bbb;
+line-height:1.8;
 }
 
 #road{
-width:90%;
-max-width:700px;
-height:140px;
-background:#111;
+width:95%;
+max-width:900px;
+height:230px;
+background:
+repeating-linear-gradient(
+to bottom,
+#111 0px,
+#111 72px,
+#222 72px,
+#222 75px
+);
 border:3px solid #333;
 border-radius:20px;
 position:relative;
 overflow:hidden;
-margin:20px 0;
+margin:22px 0;
+box-shadow:0 0 25px #00ffff22;
+}
+
+#myCar{
+position:absolute;
+left:10px;
+top:45px;
+font-size:3rem;
+transition:.15s linear;
 }
 
 #playerCar{
 position:absolute;
 left:10px;
-top:45px;
+top:145px;
 font-size:3rem;
-transition:.1s;
+transition:.1s linear;
 }
 
 #finishLine{
 position:absolute;
-right:10px;
-top:42px;
-font-size:3rem;
+right:12px;
+top:85px;
+font-size:4rem;
 }
 
 .footer{
@@ -301,23 +310,35 @@ text-align:center;
 color:#777;
 }
 
-/* Mobile */
 @media(max-width:700px){
 .hero h1{font-size:2.5rem;}
 .title{font-size:1.9rem;}
 .card img{height:260px;}
+#road{height:210px;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- PARTICLES -->
+<div class="particle" style="left:10%;animation-delay:0s;"></div>
+<div class="particle" style="left:22%;animation-delay:2s;"></div>
+<div class="particle" style="left:38%;animation-delay:4s;"></div>
+<div class="particle" style="left:55%;animation-delay:1s;"></div>
+<div class="particle" style="left:72%;animation-delay:3s;"></div>
+<div class="particle" style="left:88%;animation-delay:5s;"></div>
+
 <!-- GAME INTRO -->
 <div id="gameScreen">
-<h1>🏁 Race To Unlock Birthday Surprise</h1>
-<p>Press Start → Use Right Arrow / D / Space 🚗</p>
+<h1>🏁 Rohhith vs Baddies Final Race</h1>
+<p id="raceText">
+Beat my car to unlock your birthday surprise 😎<br>
+Press Start and use → / D / Space
+</p>
 
 <div id="road">
+<div id="myCar">🏎️</div>
 <div id="playerCar">🚗</div>
 <div id="finishLine">🏁</div>
 </div>
@@ -325,21 +346,13 @@ color:#777;
 <button class="btn" onclick="startGame()">Start Race</button>
 </div>
 
-<!-- MUSIC BUTTON -->
+<!-- MUSIC -->
 <button class="music" onclick="toggleMusic()">🎵 Music</button>
 
-<!-- Upload Bang Bang Bang song as bangbang.mp3 -->
-<audio id="song" loop>
-<source src="bangbang.mp3" type="audio/mp3">
+<!-- Upload file as bangbang.mp3 -->
+<audio id="song" preload="auto" loop playsinline>
+<source src="bangbang.mp3" type="audio/mpeg">
 </audio>
-
-<!-- Floating dots -->
-<div class="dot" style="left:10%;animation-delay:0s;"></div>
-<div class="dot" style="left:25%;animation-delay:2s;"></div>
-<div class="dot" style="left:45%;animation-delay:4s;"></div>
-<div class="dot" style="left:60%;animation-delay:1s;"></div>
-<div class="dot" style="left:80%;animation-delay:3s;"></div>
-<div class="dot" style="left:92%;animation-delay:5s;"></div>
 
 <!-- MAIN PAGE -->
 <div id="mainPage" style="display:none;">
@@ -349,8 +362,10 @@ color:#777;
 <h2><span id="typing"></span></h2>
 
 <p>
-Some people become friends.  
-Some become family through friendship.  
+Some people enter life and become contacts.  
+Some become friends.  
+Some become brothers without blood relation.
+
 You are one of those rare people.
 </p>
 
@@ -361,16 +376,33 @@ You are one of those rare people.
 <div class="title">Our Valuable Friendship 🤝</div>
 
 <p class="sub">
-Friendship is built through trust, loyalty, support,
-laughter, memories and being there when it matters.
-With you, every normal day became memorable.
+Friendship is not about how long we know each other.  
+It is about trust, loyalty, support, comfort, random laughs,
+unplanned memories, and knowing someone is always there.
+
+With you, normal days became memorable days.
 </p>
 
 <div class="grid">
-<div class="card"><h3>🤍 Real Bond</h3><p>No fake vibes. Genuine friendship.</p></div>
-<div class="card"><h3>😂 Laughs</h3><p>Every meet-up had comedy.</p></div>
-<div class="card"><h3>🧠 Respect</h3><p>Good hearts recognize good hearts.</p></div>
-<div class="card"><h3>👑 Brotherhood</h3><p>Started as friends. Became brothers.</p></div>
+<div class="card">
+<h3>🤍 Real Bond</h3>
+<p>No fake vibes. Pure connection.</p>
+</div>
+
+<div class="card">
+<h3>😂 Endless Laughs</h3>
+<p>Every meet-up had comedy without planning.</p>
+</div>
+
+<div class="card">
+<h3>🧠 Respect</h3>
+<p>Smart mind. Calm nature. Real heart.</p>
+</div>
+
+<div class="card">
+<h3>👑 Brotherhood</h3>
+<p>Started as friends. Became family.</p>
+</div>
 </div>
 </section>
 
@@ -381,42 +413,61 @@ With you, every normal day became memorable.
 
 <div class="step">
 <h3>📍 First Meet — August 27</h3>
-<p>The day college gave me a valuable friendship.</p>
+<p>
+A normal college day that later became important.
+The day a valuable friendship quietly started.
+</p>
 </div>
 
 <div class="step">
 <h3>🤝 Bond Started Growing</h3>
-<p>From normal talks to inside jokes and daily vibes.</p>
+<p>
+Casual talks became daily talks.  
+Jokes became comfort.  
+Friendship built naturally.
+</p>
 </div>
 
 <div class="step">
 <h3>🏔️ Ooty Trip</h3>
-<p>Chaos, fun, road vibes and unforgettable memories.</p>
+<p>
+First trip. Road vibes, chaos, laughs and unforgettable memories.
+</p>
 </div>
 
 <div class="step">
 <h3>🌿 Anaikatti Adventures</h3>
-<p>Fresh air, scenic roads and laughter.</p>
+<p>
+Fresh air, scenic roads and quality time.
+</p>
 </div>
 
 <div class="step">
 <h3>🎓 VIT Memories</h3>
-<p>Different place, same friendship energy.</p>
+<p>
+Different location. Same friendship energy.
+</p>
 </div>
 
 <div class="step">
 <h3>🏃 Bunking Class & Wandering</h3>
-<p>Some best memories were made outside classrooms.</p>
+<p>
+Some of the best memories were made outside classrooms.
+</p>
 </div>
 
 <div class="step">
 <h3>😂 Countless Laughs</h3>
-<p>The type of laughs that stay forever.</p>
+<p>
+The type of laughs remembered for years.
+</p>
 </div>
 
 <div class="step">
 <h3>❤️ Today — Brotherhood</h3>
-<p>A friendship built for lifetime.</p>
+<p>
+Now beyond friendship. A lifetime bond.
+</p>
 </div>
 
 </div>
@@ -426,23 +477,64 @@ With you, every normal day became memorable.
 <div class="title">Every Picture Has A Story 📸</div>
 
 <div class="grid">
-<div class="card"><img src="pic1.jpeg"><h3>Confidence</h3><p>Style in every frame.</p></div>
-<div class="card"><img src="pic2.jpeg"><h3>Main Character</h3><p>Effortless aura.</p></div>
-<div class="card"><img src="pic3.jpeg"><h3>Trips</h3><p>Road memories.</p></div>
-<div class="card"><img src="pic4.jpeg"><h3>Brothers</h3><p>Bond stronger than blood.</p></div>
-<div class="card"><img src="pic5.jpeg"><h3>Cars & Class</h3><p>Machine meets ambition.</p></div>
-<div class="card"><img src="pic6.jpeg"><h3>Simple Moments</h3><p>Still memorable.</p></div>
-<div class="card"><img src="pic7.jpeg"><h3>Quiet Strength</h3><p>Peaceful mind.</p></div>
+
+<div class="card">
+<img src="pic1.jpeg">
+<h3>Confidence</h3>
+<p>Even simple places look stylish.</p>
 </div>
+
+<div class="card">
+<img src="pic2.jpeg">
+<h3>Main Character Aura</h3>
+<p>Calm pose. Strong presence.</p>
+</div>
+
+<div class="card">
+<img src="pic3.jpeg">
+<h3>Road Memories</h3>
+<p>Trips, talks, laughter and brotherhood.</p>
+</div>
+
+<div class="card">
+<img src="pic4.jpeg">
+<h3>Brothers By Choice</h3>
+<p>Some bonds are stronger than blood.</p>
+</div>
+
+<div class="card">
+<img src="pic5.jpeg">
+<h3>Cars & Vision</h3>
+<p>Machines suit people with taste.</p>
+</div>
+
+<div class="card">
+<img src="pic6.jpeg">
+<h3>Simple Moments</h3>
+<p>Right people make small moments big.</p>
+</div>
+
+<div class="card">
+<img src="pic7.jpeg">
+<h3>Quiet Strength</h3>
+<p>Peaceful people often carry power.</p>
+</div>
+
+</div>
+
+<p class="quote">Photos fade. Memories stay.</p>
 </section>
 
 <section>
 <div class="title">Success Speedometer 🚀</div>
 
-<div class="speedBox">
+<p class="sub">
+Some people walk slowly.  
+You were built to move fast.
+</p>
+
 <div class="speedBar">
 <div class="speedFill"></div>
-</div>
 </div>
 
 <p class="quote">240 KM/H Towards Success 💨</p>
@@ -450,27 +542,35 @@ With you, every normal day became memorable.
 
 <section>
 <div class="title">Hidden Message 🎁</div>
-<p class="sub">Only real ones unlock this.</p>
-<button class="btn" onclick="showSecret()">Open Hidden Message ❤️</button>
+
+<p class="sub">
+Only real ones unlock hidden things.
+</p>
+
+<button class="btn" onclick="showSecret()">Open Secret ❤️</button>
 </section>
 
 <section>
 <div class="title">Birthday Wish 🎂</div>
 
 <p class="sub">
-May life bless you with happiness, peace,
-money, success, dream cars and everything you deserve.
+May life reward you with happiness, peace,
+good health, money, dream cars,
+bigger opportunities and everything you deserve.
 </p>
 
 <p class="quote">
 Happy Birthday Rohhith ❤️  
-Stay classy. Keep winning.
+Stay classy. Stay blessed. Keep winning.
 </p>
 </section>
 
 <section>
 <div class="title">From Baddies 😎</div>
-<p class="sub">Started in college. Built for lifetime.</p>
+
+<p class="sub">
+Started in college. Built for lifetime.
+</p>
 </section>
 
 <div class="footer">
@@ -493,6 +593,12 @@ setTimeout(type,55);
 }
 
 /* Music */
+function playSong(){
+let song=document.getElementById("song");
+song.volume=1;
+song.play().catch(()=>{});
+}
+
 function toggleMusic(){
 let song=document.getElementById("song");
 if(song.paused){song.play();}
@@ -504,33 +610,52 @@ function showSecret(){
 alert("No matter where life takes us, this friendship will always stay valuable. Proud to have you da macha ❤️");
 }
 
-/* Mac Game */
-let carPos=10;
+/* Race Game */
+let playerPos=10;
+let myPos=10;
 let gameStarted=false;
 let gameFinished=false;
+let enemyMove;
 
 function startGame(){
+
 gameStarted=true;
 document.querySelector("#gameScreen .btn").style.display="none";
 
-let song=document.getElementById("song");
-song.play();
+playSong();
 
-document.querySelector("#gameScreen p").innerHTML=
-"Use → Arrow Key / D / Spacebar to accelerate 🚗";
+document.getElementById("raceText").innerHTML=
+"Use → Arrow / D / Spacebar to accelerate 🚗";
+
+enemyMove=setInterval(()=>{
+if(!gameFinished){
+myPos += Math.random()*14 + 8;
+document.getElementById("myCar").style.left=myPos+"px";
+}
+},220);
 }
 
 function moveCar(){
 
 if(!gameStarted || gameFinished)return;
 
-carPos += 28;
+playerPos += 30;
+document.getElementById("playerCar").style.left=playerPos+"px";
 
-document.getElementById("playerCar").style.left = carPos + "px";
+/* prevent my car winning */
+if(myPos > window.innerWidth*0.72){
+myPos = window.innerWidth*0.63;
+document.getElementById("myCar").style.left=myPos+"px";
+}
 
-if(carPos > window.innerWidth*0.68){
+/* player wins */
+if(playerPos > window.innerWidth*0.72){
 
 gameFinished=true;
+clearInterval(enemyMove);
+
+document.getElementById("raceText").innerHTML=
+"🏆 Rohhith Wins! Birthday Page Unlocked 🎉";
 
 setTimeout(()=>{
 document.getElementById("gameScreen").style.opacity="0";
@@ -540,15 +665,13 @@ document.getElementById("gameScreen").style.display="none";
 document.getElementById("mainPage").style.display="block";
 type();
 window.scrollTo(0,0);
-},700);
+},900);
 
-},300);
-
+},1500);
 }
 }
 
 document.addEventListener("keydown",function(e){
-
 if(
 e.key==="ArrowRight" ||
 e.key==="d" ||
@@ -557,9 +680,9 @@ e.code==="Space"
 ){
 moveCar();
 }
-
 });
 
+/* trackpad click support */
 document.getElementById("gameScreen").addEventListener("click",function(){
 if(gameStarted){
 moveCar();
