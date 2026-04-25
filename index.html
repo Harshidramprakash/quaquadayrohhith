@@ -45,8 +45,8 @@ inset:0;
 background:#000;
 z-index:999999;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 transition:1s;
 }
 
@@ -64,9 +64,9 @@ text-shadow:0 0 20px #00ffff;
 }
 
 .barWrap{
-height:15px;
+height:14px;
 background:#111;
-border-radius:50px;
+border-radius:40px;
 overflow:hidden;
 }
 
@@ -74,6 +74,107 @@ overflow:hidden;
 height:100%;
 width:0%;
 background:linear-gradient(90deg,#00ffff,#00ff88,#ffd700);
+}
+
+#loadText{
+margin-top:12px;
+font-weight:800;
+}
+
+/* popup */
+#finalPopup,#voicePopup{
+position:fixed;
+inset:0;
+background:#000000d9;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.popupCard,.voiceCard{
+background:#111;
+padding:35px;
+border-radius:20px;
+max-width:500px;
+width:92%;
+text-align:center;
+box-shadow:0 0 30px #00ffff44;
+}
+
+.popupCard button,
+.voicePlayBtn,
+.voiceCloseBtn{
+margin-top:18px;
+padding:12px 22px;
+border:none;
+border-radius:30px;
+font-weight:800;
+cursor:pointer;
+}
+
+.popupCard button,.voicePlayBtn{
+background:#00ffff;
+color:#000;
+}
+
+.voiceCloseBtn{
+background:#222;
+color:#fff;
+margin-left:8px;
+}
+
+/* waveform */
+.waveWrap{
+display:flex;
+justify-content:center;
+align-items:end;
+gap:6px;
+height:55px;
+margin:20px 0;
+}
+
+.waveWrap span{
+width:8px;
+height:14px;
+background:#00ffff;
+border-radius:20px;
+animation:wave 1s infinite ease-in-out;
+}
+
+.waveWrap span:nth-child(2){animation-delay:.1s}
+.waveWrap span:nth-child(3){animation-delay:.2s}
+.waveWrap span:nth-child(4){animation-delay:.3s}
+.waveWrap span:nth-child(5){animation-delay:.4s}
+.waveWrap span:nth-child(6){animation-delay:.5s}
+.waveWrap span:nth-child(7){animation-delay:.6s}
+
+@keyframes wave{
+0%,100%{height:14px}
+50%{height:50px}
+}
+
+/* floating buttons */
+.musicBtn{
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:9999;
+}
+
+#voiceFloatBtn{
+position:fixed;
+left:20px;
+bottom:20px;
+z-index:9999;
+padding:14px 22px;
+border:none;
+border-radius:40px;
+font-weight:800;
+cursor:pointer;
+background:#ff00cc;
+color:#fff;
+box-shadow:0 0 20px #ff00cc;
 }
 
 /* race intro */
@@ -203,7 +304,7 @@ margin-top:18px;
 color:#aaa;
 }
 
-/* main website */
+/* main site */
 #mainWebsite{
 display:none;
 }
@@ -232,30 +333,27 @@ color:#00ffff;
 text-shadow:0 0 20px #00ffff;
 }
 
-.cards,.gallery,.garageGrid,.achGrid{
+.cards,.gallery,.garageGrid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:24px;
 margin-top:40px;
 }
 
-.card,.photo,.garageCard,.achCard{
+.card,.photo,.garageCard{
 background:#111;
 padding:25px;
 border-radius:18px;
 box-shadow:0 0 15px #00ffff22;
 }
 
-.photo img{
+.photo img,
+.garageCard img{
 width:100%;
-height:320px;
+height:220px;
 object-fit:cover;
 border-radius:14px;
-}
-
-.photo h3{
-margin-top:10px;
-color:#00ffff;
+margin-bottom:10px;
 }
 
 .timeline{
@@ -286,14 +384,7 @@ text-align:center;
 color:#aaa;
 }
 
-.musicBtn{
-position:fixed;
-right:20px;
-bottom:20px;
-z-index:9999;
-}
-
-/* floating hearts */
+/* hearts */
 .heart{
 position:fixed;
 bottom:-50px;
@@ -306,35 +397,6 @@ pointer-events:none;
 @keyframes fly{
 0%{transform:translateY(0) rotate(0deg)}
 100%{transform:translateY(-110vh) rotate(360deg)}
-}
-
-/* popup */
-#finalPopup{
-position:fixed;
-inset:0;
-background:#000000c9;
-display:none;
-justify-content:center;
-align-items:center;
-z-index:99999;
-}
-
-.popupCard{
-background:#111;
-padding:35px;
-border-radius:18px;
-max-width:450px;
-text-align:center;
-}
-
-.popupCard button{
-margin-top:20px;
-padding:12px 22px;
-border:none;
-border-radius:30px;
-background:#00ffff;
-font-weight:800;
-cursor:pointer;
 }
 
 /* respect bar */
@@ -352,8 +414,8 @@ height:100%;
 width:0%;
 background:linear-gradient(90deg,#00ffff,#00ff88,#ffd700);
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 font-weight:900;
 color:#000;
 transition:2s;
@@ -373,9 +435,7 @@ h1{font-size:2.2rem}
 <div id="loader">
 <div class="loaderBox">
 <h1>Loading Memories...</h1>
-<div class="barWrap">
-<div id="loadBar"></div>
-</div>
+<div class="barWrap"><div id="loadBar"></div></div>
 <p id="loadText">0%</p>
 </div>
 </div>
@@ -389,11 +449,34 @@ h1{font-size:2.2rem}
 </div>
 </div>
 
+<!-- voice popup -->
+<div id="voicePopup">
+<div class="voiceCard">
+<h2>🎙️ Message From Baddies</h2>
+
+<div class="waveWrap">
+<span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span>
+</div>
+
+<p>Tap play to hear a personal birthday message.</p>
+
+<button onclick="playVoiceMsg()" class="voicePlayBtn">▶ Play Message</button>
+<button onclick="closeVoicePopup()" class="voiceCloseBtn">Close</button>
+</div>
+</div>
+
+<button id="voiceFloatBtn" onclick="openVoicePopup()">🎧 Message</button>
+
 <audio id="song" loop preload="auto" playsinline>
 <source src="./Bang-Bang-Bang.mp3" type="audio/mpeg">
 </audio>
 
-<!-- race intro -->
+<audio id="voiceMsg" preload="auto">
+<source src="./voice.mp3" type="audio/mpeg">
+</audio>
+
+<!-- race -->
 <div id="raceIntro">
 
 <h1 class="raceTitle">🏁 Rohhith Birthday Grand Prix</h1>
@@ -419,14 +502,11 @@ Beat the rival car and unlock your surprise page.
 
 <button onclick="startRace()" class="raceBtn">START ENGINE</button>
 
-<p class="controls">
-Press SPACE / → rapidly<br>
-Mobile: Tap the track
-</p>
+<p class="controls">Press SPACE / → rapidly<br>Mobile: Tap the track</p>
 
 </div>
 
-<!-- main site -->
+<!-- main website -->
 <div id="mainWebsite">
 
 <button class="btn musicBtn" onclick="toggleMusic()">🔊 Music</button>
@@ -437,8 +517,7 @@ Mobile: Tap the track
 A Brother. A Listener. A Real One. A Lifetime Friend.
 Some people enter life casually. Some stay for a season.
 But some become part of your story forever.
-You are one of those rare souls who turned ordinary days
-into unforgettable memories.
+You are one of those rare souls who turned ordinary days into unforgettable memories.
 </p>
 <a href="#about" class="btn">Open Memories ❤️</a>
 </section>
@@ -446,9 +525,8 @@ into unforgettable memories.
 <section id="about">
 <h1>Our Valuable Friendship 🤝</h1>
 <p>
-Friendship is trust, loyalty, support during hard times,
-laughing for no reason, understanding silence,
-and always knowing someone is there.
+Friendship is trust, loyalty, support during hard times, laughing for no reason,
+understanding silence, and always knowing someone is there.
 That is exactly what you are da machan.
 </p>
 
@@ -467,7 +545,7 @@ That is exactly what you are da machan.
 <div><strong>🤝 Bonding Started</strong><br>Normal talks became long talks.</div>
 <div><strong>🌄 Ooty Trip</strong><br>Cold breeze and madness.</div>
 <div><strong>🌿 Anaikatti Ride</strong><br>Elite roads. Elite talks.</div>
-<div><strong>🏫 VIT Visit</strong><br>Our first hackathon experience was a rollercoaster of intense challenges and enjoyable moments.</div>
+<div><strong>🏫 VIT Visit</strong><br>Hackathon memories and rollercoaster fun.</div>
 <div><strong>🏃 Bunk Legends</strong><br>Classes skipped. Memories attended.</div>
 <div><strong>❤️ Today</strong><br>Brotherhood.</div>
 </div>
@@ -489,11 +567,32 @@ That is exactly what you are da machan.
 <section>
 <h1>Dream Garage 🏎️</h1>
 <div class="garageGrid">
-<div class="garageCard">Toyota Fortuner</div>
-<div class="garageCard">BMW M5 CS</div>
-<div class="garageCard">Porsche 911</div>
-<div class="garageCard">Mercedes G63</div>
-<div class="garageCard">Range Rover</div>
+
+<div class="garageCard">
+<img src="fortuner.jpg">
+<h3>Toyota Fortuner</h3>
+</div>
+
+<div class="garageCard">
+<img src="bmwm5.jpg">
+<h3>BMW M5 CS</h3>
+</div>
+
+<div class="garageCard">
+<img src="porsche911.jpg">
+<h3>Porsche 911</h3>
+</div>
+
+<div class="garageCard">
+<img src="g63.jpg">
+<h3>Mercedes G63</h3>
+</div>
+
+<div class="garageCard">
+<img src="rangerover.jpg">
+<h3>Range Rover</h3>
+</div>
+
 </div>
 </section>
 
@@ -507,9 +606,8 @@ That is exactly what you are da machan.
 <section>
 <h1>Birthday Wish 🎂</h1>
 <p>
-May this year bring success, peace, health,
-wealth, happiness, adventures,
-new cars, more trips, bigger wins,
+May this year bring success, peace, health, wealth, happiness,
+adventures, new cars, more trips, bigger wins,
 and every dream becoming reality.
 Keep shining machan.
 </p>
@@ -524,6 +622,7 @@ Made with memories, respect & brotherhood 💯
 
 <script>
 const song=document.getElementById("song");
+const voice=document.getElementById("voiceMsg");
 
 function toggleMusic(){
 if(song.paused){song.play().catch(()=>{});}
@@ -534,15 +633,20 @@ else{song.pause();}
 let load=0;
 let loader=setInterval(()=>{
 load+=2;
-document.getElementById("loadBar").style.width=load+"%";
-document.getElementById("loadText").innerHTML=load+"%";
+loadBar.style.width=load+"%";
+loadText.innerHTML=load+"%";
+
 if(load>=100){
 clearInterval(loader);
+
 setTimeout(()=>{
-document.getElementById("loader").style.opacity="0";
+loader=document.getElementById("loader");
+loader.style.opacity="0";
+
 setTimeout(()=>{
-document.getElementById("loader").style.display="none";
-},1000);
+loader.style.display="none";
+},900);
+
 },300);
 }
 },40);
@@ -550,51 +654,47 @@ document.getElementById("loader").style.display="none";
 /* race */
 let player=20;
 let enemy=20;
-let raceStarted=false;
 let raceEnded=false;
-let speed=0;
-let enemyLoop;
 
 function startRace(){
 document.querySelector(".raceBtn").style.display="none";
 song.play().catch(()=>{});
-trafficLights();
-}
 
-function trafficLights(){
 setTimeout(()=>{l1.style.background="red";},400);
-setTimeout(()=>{l2.style.background="orange";},1100);
-setTimeout(()=>{l3.style.background="lime";beginRace();},1800);
+setTimeout(()=>{l2.style.background="orange";},1000);
+setTimeout(()=>{
+l3.style.background="lime";
+beginRace();
+},1600);
 }
 
 function beginRace(){
-raceStarted=true;
-document.addEventListener("keydown",controlRace);
+document.addEventListener("keydown",keyMove);
 track.addEventListener("click",movePlayer);
-enemyAI();
+enemyRun();
 }
 
-function controlRace(e){
-if(e.code==="Space" || e.key==="ArrowRight"){movePlayer();}
+function keyMove(e){
+if(e.code==="Space" || e.key==="ArrowRight"){
+movePlayer();
+}
 }
 
 function movePlayer(){
 if(raceEnded)return;
 
 player+=34;
-speed+=12;
-if(speed>240)speed=240;
-
-speedBox.innerHTML=speed+" KM/H";
 car1.style.left=player+"px";
+speedBox.innerHTML=Math.min(player*2,240)+" KM/H";
 
-let finish=track.offsetWidth-150;
-if(player>=finish)winRace();
+if(player>=track.offsetWidth-150){
+winRace();
+}
 }
 
-function enemyAI(){
-enemyLoop=setInterval(()=>{
-if(raceEnded)return;
+function enemyRun(){
+let ai=setInterval(()=>{
+if(raceEnded){clearInterval(ai);return;}
 enemy+=8;
 car2.style.left=enemy+"px";
 },150);
@@ -602,16 +702,15 @@ car2.style.left=enemy+"px";
 
 function winRace(){
 raceEnded=true;
-clearInterval(enemyLoop);
 speedBox.innerHTML="🏆 WINNER";
 
 setTimeout(()=>{
 raceIntro.style.display="none";
 mainWebsite.style.display="block";
-createHearts();
 song.play().catch(()=>{});
+createHearts();
 window.scrollTo(0,0);
-},1800);
+},1700);
 }
 
 /* hearts */
@@ -628,19 +727,36 @@ document.body.appendChild(h);
 
 /* popup */
 setTimeout(()=>{
-document.getElementById("finalPopup").style.display="flex";
+finalPopup.style.display="flex";
 },22000);
 
 function closePopup(){
-document.getElementById("finalPopup").style.display="none";
+finalPopup.style.display="none";
 }
 
-/* respect bar */
+/* respect meter */
 window.addEventListener("load",()=>{
 setTimeout(()=>{
-document.getElementById("meterBar").style.width="100%";
+meterBar.style.width="100%";
 },1500);
 });
+
+/* voice popup */
+function openVoicePopup(){
+voicePopup.style.display="flex";
+}
+
+function closeVoicePopup(){
+voicePopup.style.display="none";
+voice.pause();
+voice.currentTime=0;
+song.play().catch(()=>{});
+}
+
+function playVoiceMsg(){
+song.pause();
+voice.play().catch(()=>{});
+}
 </script>
 
 </body>
