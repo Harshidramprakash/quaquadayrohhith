@@ -39,7 +39,7 @@ from{transform:scale(1);}
 to{transform:scale(1.12);}
 }
 
-/* floating dots */
+/* Floating dots */
 .dot{
 position:fixed;
 width:4px;
@@ -56,11 +56,13 @@ from{transform:translateY(100vh);}
 to{transform:translateY(-10vh);}
 }
 
+/* Sections */
 section{
 padding:95px 20px;
 text-align:center;
 }
 
+/* Hero */
 .hero{
 min-height:100vh;
 display:flex;
@@ -79,7 +81,7 @@ margin-bottom:15px;
 }
 
 .hero h2{
-font-size:1.25rem;
+font-size:1.2rem;
 color:#ddd;
 margin-bottom:22px;
 min-height:35px;
@@ -91,6 +93,7 @@ line-height:1.9;
 color:#bbb;
 }
 
+/* Buttons */
 .btn{
 display:inline-block;
 margin-top:30px;
@@ -102,6 +105,8 @@ font-weight:800;
 text-decoration:none;
 box-shadow:0 0 20px #00ffff66;
 transition:.3s;
+border:none;
+cursor:pointer;
 }
 
 .btn:hover{
@@ -123,6 +128,7 @@ z-index:100;
 box-shadow:0 0 15px #00ffff44;
 }
 
+/* Titles */
 .title{
 font-size:2.4rem;
 font-weight:900;
@@ -136,6 +142,7 @@ line-height:1.9;
 color:#aaa;
 }
 
+/* Cards */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -178,6 +185,7 @@ line-height:1.8;
 font-size:.95rem;
 }
 
+/* Timeline */
 .timeline{
 max-width:950px;
 margin:auto;
@@ -199,11 +207,92 @@ color:#ffd700;
 margin-bottom:10px;
 }
 
+/* Speedometer */
+.speedBox{
+max-width:700px;
+margin:auto;
+margin-top:25px;
+}
+
+.speedBar{
+width:100%;
+height:25px;
+background:#111;
+border-radius:30px;
+overflow:hidden;
+}
+
+.speedFill{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00ffff,#ffd700);
+animation:speedLoad 4s forwards;
+}
+
+@keyframes speedLoad{
+from{width:0;}
+to{width:96%;}
+}
+
+/* Quotes */
 .quote{
 margin-top:25px;
 font-size:1.2rem;
 font-weight:700;
 color:#ffd700;
+}
+
+/* Game Screen */
+#gameScreen{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+text-align:center;
+padding:20px;
+transition:.7s;
+}
+
+#gameScreen h1{
+font-size:2.4rem;
+color:#00ffff;
+margin-bottom:15px;
+text-shadow:0 0 15px #00ffff;
+}
+
+#gameScreen p{
+color:#bbb;
+}
+
+#road{
+width:90%;
+max-width:700px;
+height:140px;
+background:#111;
+border:3px solid #333;
+border-radius:20px;
+position:relative;
+overflow:hidden;
+margin:20px 0;
+}
+
+#playerCar{
+position:absolute;
+left:10px;
+top:45px;
+font-size:3rem;
+transition:.1s;
+}
+
+#finishLine{
+position:absolute;
+right:10px;
+top:42px;
+font-size:3rem;
 }
 
 .footer{
@@ -212,6 +301,7 @@ text-align:center;
 color:#777;
 }
 
+/* Mobile */
 @media(max-width:700px){
 .hero h1{font-size:2.5rem;}
 .title{font-size:1.9rem;}
@@ -222,12 +312,28 @@ color:#777;
 
 <body>
 
+<!-- GAME INTRO -->
+<div id="gameScreen">
+<h1>🏁 Race To Unlock Birthday Surprise</h1>
+<p>Press Start → Use Right Arrow / D / Space 🚗</p>
+
+<div id="road">
+<div id="playerCar">🚗</div>
+<div id="finishLine">🏁</div>
+</div>
+
+<button class="btn" onclick="startGame()">Start Race</button>
+</div>
+
+<!-- MUSIC BUTTON -->
 <button class="music" onclick="toggleMusic()">🎵 Music</button>
 
+<!-- Upload Bang Bang Bang song as bangbang.mp3 -->
 <audio id="song" loop>
-<source src="song.mp3" type="audio/mp3">
+<source src="bangbang.mp3" type="audio/mp3">
 </audio>
 
+<!-- Floating dots -->
 <div class="dot" style="left:10%;animation-delay:0s;"></div>
 <div class="dot" style="left:25%;animation-delay:2s;"></div>
 <div class="dot" style="left:45%;animation-delay:4s;"></div>
@@ -235,240 +341,230 @@ color:#777;
 <div class="dot" style="left:80%;animation-delay:3s;"></div>
 <div class="dot" style="left:92%;animation-delay:5s;"></div>
 
-<!-- HERO -->
+<!-- MAIN PAGE -->
+<div id="mainPage" style="display:none;">
 
 <section class="hero">
 <h1>Happy Birthday Rohhith 🎉</h1>
 <h2><span id="typing"></span></h2>
 
 <p>
-Some people come into life and stay as contacts.  
-Some become classmates.  
-Some become friends.  
-And some become family through friendship.
-
+Some people become friends.  
+Some become family through friendship.  
 You are one of those rare people.
 </p>
 
 <a href="#about" class="btn">Open Memories ❤️</a>
 </section>
 
-<!-- FRIENDSHIP -->
-
 <section id="about">
 <div class="title">Our Valuable Friendship 🤝</div>
 
 <p class="sub">
-Friendship is not measured by how long people know each other.  
-It is measured by trust, loyalty, support, comfort, laughter, and memories created together.
-
-With you, every normal day became a better day.
+Friendship is built through trust, loyalty, support,
+laughter, memories and being there when it matters.
+With you, every normal day became memorable.
 </p>
 
 <div class="grid">
-
-<div class="card">
-<h3>🤍 Real Bond</h3>
-<p>No fake vibes. No acting. Just genuine connection.</p>
-</div>
-
-<div class="card">
-<h3>😂 Endless Laughs</h3>
-<p>Every meet-up had comedy without planning it.</p>
-</div>
-
-<div class="card">
-<h3>🧠 Mutual Respect</h3>
-<p>Good hearts recognize good hearts.</p>
-</div>
-
-<div class="card">
-<h3>👑 Brotherhood</h3>
-<p>Started as friends. Became brothers.</p>
-</div>
-
+<div class="card"><h3>🤍 Real Bond</h3><p>No fake vibes. Genuine friendship.</p></div>
+<div class="card"><h3>😂 Laughs</h3><p>Every meet-up had comedy.</p></div>
+<div class="card"><h3>🧠 Respect</h3><p>Good hearts recognize good hearts.</p></div>
+<div class="card"><h3>👑 Brotherhood</h3><p>Started as friends. Became brothers.</p></div>
 </div>
 </section>
 
-<!-- TIMELINE -->
-
 <section>
 <div class="title">Timeline Of Friendship 🕰️</div>
-
-<p class="sub">
-Every strong friendship has chapters.  
-This is ours.
-</p>
 
 <div class="timeline">
 
 <div class="step">
 <h3>📍 First Meet — August 27</h3>
-<p>
-A regular college day that didn’t feel important at the time.  
-But looking back, it became the day a valuable friendship quietly started.
-</p>
+<p>The day college gave me a valuable friendship.</p>
 </div>
 
 <div class="step">
 <h3>🤝 Bond Started Growing</h3>
-<p>
-From casual conversations to inside jokes, from classmates to comfort zone people.  
-The bond built naturally without forcing anything.
-</p>
+<p>From normal talks to inside jokes and daily vibes.</p>
 </div>
 
 <div class="step">
-<h3>🏔️ First Trip — Ooty</h3>
-<p>
-Trips reveal real friendships.  
-Laughs, chaos, photos, roadside moments, random talks, and memories that still replay.
-</p>
+<h3>🏔️ Ooty Trip</h3>
+<p>Chaos, fun, road vibes and unforgettable memories.</p>
 </div>
 
 <div class="step">
 <h3>🌿 Anaikatti Adventures</h3>
-<p>
-Fresh air, scenic roads, relaxed vibes and unforgettable moments.  
-Some places become special because of the people present there.
-</p>
+<p>Fresh air, scenic roads and laughter.</p>
 </div>
 
 <div class="step">
 <h3>🎓 VIT Memories</h3>
-<p>
-Another chapter added.  
-New place, same friendship energy.
-</p>
+<p>Different place, same friendship energy.</p>
 </div>
 
 <div class="step">
 <h3>🏃 Bunking Class & Wandering</h3>
-<p>
-Some of the funniest memories were never inside classrooms.  
-Unexpected walks, random tea breaks, pointless roaming, and priceless laughs.
-</p>
+<p>Some best memories were made outside classrooms.</p>
 </div>
 
 <div class="step">
 <h3>😂 Countless Laughs</h3>
-<p>
-The kind of laughs where nothing serious happened, but everything became memorable.
-</p>
+<p>The type of laughs that stay forever.</p>
 </div>
 
 <div class="step">
 <h3>❤️ Today — Brotherhood</h3>
-<p>
-Now it’s beyond friendship.  
-A bond built on trust, memories, loyalty, and genuine care.
-</p>
+<p>A friendship built for lifetime.</p>
 </div>
 
 </div>
 </section>
-
-<!-- PHOTOS -->
 
 <section>
 <div class="title">Every Picture Has A Story 📸</div>
 
 <div class="grid">
-
-<div class="card">
-<img src="pic1.jpeg">
-<h3>Confidence In Silence</h3>
-<p>Even ordinary places look stylish when confidence enters the frame.</p>
+<div class="card"><img src="pic1.jpeg"><h3>Confidence</h3><p>Style in every frame.</p></div>
+<div class="card"><img src="pic2.jpeg"><h3>Main Character</h3><p>Effortless aura.</p></div>
+<div class="card"><img src="pic3.jpeg"><h3>Trips</h3><p>Road memories.</p></div>
+<div class="card"><img src="pic4.jpeg"><h3>Brothers</h3><p>Bond stronger than blood.</p></div>
+<div class="card"><img src="pic5.jpeg"><h3>Cars & Class</h3><p>Machine meets ambition.</p></div>
+<div class="card"><img src="pic6.jpeg"><h3>Simple Moments</h3><p>Still memorable.</p></div>
+<div class="card"><img src="pic7.jpeg"><h3>Quiet Strength</h3><p>Peaceful mind.</p></div>
 </div>
-
-<div class="card">
-<img src="pic2.jpeg">
-<h3>Main Character Energy</h3>
-<p>Calm pose, clean style, natural setting — effortless aura.</p>
-</div>
-
-<div class="card">
-<img src="pic3.jpeg">
-<h3>Roadside Conversations</h3>
-<p>Trips, talks, plans, jokes and memories parked forever.</p>
-</div>
-
-<div class="card">
-<img src="pic4.jpeg">
-<h3>Brothers By Choice</h3>
-<p>Some people become family without sharing blood.</p>
-</div>
-
-<div class="card">
-<img src="pic5.jpeg">
-<h3>Cars & Class</h3>
-<p>Machines suit people with taste and ambition.</p>
-</div>
-
-<div class="card">
-<img src="pic6.jpeg">
-<h3>Simple Day, Great Memory</h3>
-<p>Right people turn casual moments into keepsakes.</p>
-</div>
-
-<div class="card">
-<img src="pic7.jpeg">
-<h3>Quiet Strength</h3>
-<p>Peaceful people often carry the strongest minds.</p>
-</div>
-
-</div>
-
-<p class="quote">Photos capture faces. Friendship captures life.</p>
 </section>
 
-<!-- MESSAGE -->
+<section>
+<div class="title">Success Speedometer 🚀</div>
+
+<div class="speedBox">
+<div class="speedBar">
+<div class="speedFill"></div>
+</div>
+</div>
+
+<p class="quote">240 KM/H Towards Success 💨</p>
+</section>
 
 <section>
-<div class="title">Message To My Brother 🎂</div>
+<div class="title">Hidden Message 🎁</div>
+<p class="sub">Only real ones unlock this.</p>
+<button class="btn" onclick="showSecret()">Open Hidden Message ❤️</button>
+</section>
+
+<section>
+<div class="title">Birthday Wish 🎂</div>
 
 <p class="sub">
-Thank you for every laugh, every trip, every support, every random plan,
-every time you were there, and every memory we never expected to become special.
-
-May life reward you with success, happiness, peace, dream cars, good health,
-stronger opportunities, and everything your heart truly deserves.
+May life bless you with happiness, peace,
+money, success, dream cars and everything you deserve.
 </p>
 
 <p class="quote">
 Happy Birthday Rohhith ❤️  
-Stay classy. Stay blessed. Keep winning.
+Stay classy. Keep winning.
 </p>
 </section>
 
 <section>
 <div class="title">From Baddies 😎</div>
-<p class="sub">
-Started in college. Built for lifetime.
-</p>
+<p class="sub">Started in college. Built for lifetime.</p>
 </section>
 
 <div class="footer">
 Made with love and respect 🤝
 </div>
 
+</div>
+
 <script>
+/* Typing */
 let text="A Brother. A Listener. A Real One. A Lifetime Friend.";
 let i=0;
+
 function type(){
 if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
+document.getElementById("typing").innerHTML += text.charAt(i);
 i++;
 setTimeout(type,55);
 }
 }
-type();
 
+/* Music */
 function toggleMusic(){
 let song=document.getElementById("song");
 if(song.paused){song.play();}
 else{song.pause();}
 }
+
+/* Hidden Message */
+function showSecret(){
+alert("No matter where life takes us, this friendship will always stay valuable. Proud to have you da macha ❤️");
+}
+
+/* Mac Game */
+let carPos=10;
+let gameStarted=false;
+let gameFinished=false;
+
+function startGame(){
+gameStarted=true;
+document.querySelector("#gameScreen .btn").style.display="none";
+
+let song=document.getElementById("song");
+song.play();
+
+document.querySelector("#gameScreen p").innerHTML=
+"Use → Arrow Key / D / Spacebar to accelerate 🚗";
+}
+
+function moveCar(){
+
+if(!gameStarted || gameFinished)return;
+
+carPos += 28;
+
+document.getElementById("playerCar").style.left = carPos + "px";
+
+if(carPos > window.innerWidth*0.68){
+
+gameFinished=true;
+
+setTimeout(()=>{
+document.getElementById("gameScreen").style.opacity="0";
+
+setTimeout(()=>{
+document.getElementById("gameScreen").style.display="none";
+document.getElementById("mainPage").style.display="block";
+type();
+window.scrollTo(0,0);
+},700);
+
+},300);
+
+}
+}
+
+document.addEventListener("keydown",function(e){
+
+if(
+e.key==="ArrowRight" ||
+e.key==="d" ||
+e.key==="D" ||
+e.code==="Space"
+){
+moveCar();
+}
+
+});
+
+document.getElementById("gameScreen").addEventListener("click",function(){
+if(gameStarted){
+moveCar();
+}
+});
 </script>
 
 </body>
