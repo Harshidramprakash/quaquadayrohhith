@@ -16,23 +16,48 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#050505;
-color:white;
+background:#000;
+color:#fff;
 overflow-x:hidden;
 }
 
+/* animated background */
 body::before{
 content:"";
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top right,#00ffff22,transparent 30%),
-radial-gradient(circle at bottom left,#ffffff11,transparent 25%);
+radial-gradient(circle at 20% 20%,#00ffff22,transparent 20%),
+radial-gradient(circle at 80% 30%,#ffd70022,transparent 20%),
+radial-gradient(circle at 50% 80%,#00ffff18,transparent 20%);
+animation:bgmove 8s infinite alternate;
+z-index:-2;
+}
+
+@keyframes bgmove{
+from{transform:scale(1);}
+to{transform:scale(1.15);}
+}
+
+/* floating particles */
+.particle{
+position:fixed;
+width:4px;
+height:4px;
+background:#00ffff;
+border-radius:50%;
+opacity:.5;
+animation:float 10s linear infinite;
 z-index:-1;
 }
 
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+
 section{
-padding:70px 20px;
+padding:80px 20px;
 text-align:center;
 }
 
@@ -46,17 +71,24 @@ padding:20px;
 }
 
 .hero h1{
-font-size:3.3rem;
+font-size:4rem;
 font-weight:900;
 color:#00ffff;
-text-shadow:0 0 20px #00ffff;
-margin-bottom:10px;
+text-shadow:0 0 20px #00ffff,0 0 40px #00ffff;
+margin-bottom:15px;
+animation:pulse 2s infinite alternate;
+}
+
+@keyframes pulse{
+from{transform:scale(1);}
+to{transform:scale(1.03);}
 }
 
 .hero h2{
 font-size:1.2rem;
-color:#ddd;
 margin-bottom:20px;
+color:#ddd;
+min-height:40px;
 }
 
 .hero p{
@@ -68,18 +100,38 @@ color:#bbb;
 .btn{
 display:inline-block;
 margin-top:30px;
-padding:14px 30px;
-border-radius:30px;
-background:#00ffff;
+padding:15px 34px;
+border-radius:40px;
+background:linear-gradient(45deg,#00ffff,#ffd700);
 color:#000;
-font-weight:700;
+font-weight:800;
 text-decoration:none;
-box-shadow:0 0 20px #00ffff88;
+box-shadow:0 0 25px #00ffff88;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.topbtn{
+position:fixed;
+top:20px;
+right:20px;
+padding:10px 18px;
+border:none;
+border-radius:30px;
+font-weight:700;
+cursor:pointer;
+background:#111;
+color:#00ffff;
+box-shadow:0 0 15px #00ffff44;
+z-index:99;
 }
 
 .title{
-font-size:2.2rem;
-font-weight:800;
+font-size:2.4rem;
+font-weight:900;
 margin-bottom:15px;
 }
 
@@ -105,12 +157,12 @@ padding:20px;
 border-radius:18px;
 border:1px solid #222;
 box-shadow:0 0 18px #00ffff18;
-transition:0.3s;
+transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-8px);
-box-shadow:0 0 30px #00ffff44;
+box-shadow:0 0 35px #00ffff44;
 }
 
 .card img{
@@ -124,40 +176,52 @@ margin-bottom:15px;
 .card h3{
 color:#00ffff;
 margin-bottom:10px;
-font-size:1.1rem;
 }
 
 .card p{
 color:#bbb;
 line-height:1.7;
-font-size:0.95rem;
 }
 
 .quote{
 margin-top:25px;
 font-size:1.25rem;
-font-weight:600;
-color:#00ffff;
+font-weight:700;
+color:#ffd700;
+}
+
+.bar{
+width:100%;
+max-width:700px;
+height:22px;
+background:#111;
+margin:20px auto;
+border-radius:20px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+width:96%;
+background:linear-gradient(90deg,#00ffff,#ffd700);
+border-radius:20px;
+animation:load 3s ease;
+}
+
+@keyframes load{
+from{width:0;}
+to{width:96%;}
 }
 
 .footer{
 padding:40px;
-color:#888;
 text-align:center;
-}
-
-.glow{
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 10px #00ffff;}
-to{text-shadow:0 0 28px #00ffff,0 0 45px #00ffff;}
+color:#777;
 }
 
 @media(max-width:700px){
-.hero h1{font-size:2.4rem;}
-.title{font-size:1.8rem;}
+.hero h1{font-size:2.5rem;}
+.title{font-size:1.9rem;}
 .card img{height:260px;}
 }
 </style>
@@ -165,222 +229,187 @@ to{text-shadow:0 0 28px #00ffff,0 0 45px #00ffff;}
 
 <body>
 
-<!-- HERO -->
+<button class="topbtn" onclick="toggleMusic()">🎵 Music</button>
 
+<audio id="song" loop>
+<source src="song.mp3" type="audio/mp3">
+</audio>
+
+<!-- particles -->
+<div class="particle" style="left:10%;animation-delay:0s;"></div>
+<div class="particle" style="left:25%;animation-delay:2s;"></div>
+<div class="particle" style="left:40%;animation-delay:4s;"></div>
+<div class="particle" style="left:60%;animation-delay:1s;"></div>
+<div class="particle" style="left:80%;animation-delay:3s;"></div>
+<div class="particle" style="left:90%;animation-delay:5s;"></div>
+
+<!-- HERO -->
 <section class="hero">
-<h1 class="glow">Happy Birthday Rohhith 🎉</h1>
-<h2>A Brother. A Listener. A Real One. A Lifetime Friend.</h2>
+<h1>Happy Birthday Rohhith 🎉</h1>
+
+<h2><span id="typing"></span></h2>
 
 <p>
-Some friendships are casual. Some are temporary.  
-But some friendships become part of life itself.  
-You are one of those rare people who turned normal days into memorable moments,
-laughs into memories, and friendship into something valuable.
+Some people enter life and become memories.  
+Some become brothers.  
+You became both.
 </p>
 
-<a href="#about" class="btn">Open Memories ❤️</a>
+<a href="#about" class="btn">Enter Final Boss Mode 😎</a>
 </section>
 
-<!-- ABOUT FRIENDSHIP -->
-
+<!-- FRIENDSHIP -->
 <section id="about">
 <div class="title">Our Valuable Friendship 🤝</div>
 
 <p class="sub">
-Friendship is not only about being together in photos.  
-It is about trust, support, random late conversations, laughing for no reason,
-being present during hard times, and knowing someone is always there.
-
-You are that kind of friend.
+Not built in one day.  
+Built through laughs, drives, trust, support, and countless moments.
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>🤍 Real Bond</h3>
-<p>
-No fake vibes. No acting. Just genuine friendship.
-</p>
+<p>No fake vibes. Pure friendship.</p>
 </div>
 
 <div class="card">
-<h3>😂 Unlimited Memories</h3>
-<p>
-Every trip, every meet-up, every random joke became a memory.
-</p>
+<h3>😂 Memories</h3>
+<p>Random moments became golden memories.</p>
 </div>
 
 <div class="card">
 <h3>🧠 Respect</h3>
-<p>
-Smart mind, calm nature, and a strong heart.
-</p>
+<p>Smart mind. Calm heart.</p>
 </div>
 
 <div class="card">
-<h3>👑 Rare Person</h3>
-<p>
-Good people are rare. Real friends are rarer.
-</p>
+<h3>👑 Rare One</h3>
+<p>People like you are uncommon.</p>
 </div>
 
 </div>
 </section>
 
-<!-- PHOTO STORIES -->
-
+<!-- PHOTOS -->
 <section>
-<div class="title">Every Picture Has A Story 📸</div>
+<div class="title">Legend Gallery 📸</div>
 
 <div class="grid">
 
 <div class="card">
 <img src="pic1.jpeg">
-<h3>1. Confidence In Silence 😎</h3>
-<p>
-Standing in class with style and confidence.  
-Even in simple moments, you carry presence.
-The calm smile says everything.
-</p>
+<h3>Confidence In Silence</h3>
+<p>Even simple moments look premium.</p>
 </div>
 
 <div class="card">
 <img src="pic2.jpeg">
-<h3>2. Nature + Class 🌿</h3>
-<p>
-This picture feels premium.  
-Leaning against the tree like life is easy.
-Pure style, peace, and main character energy.
-</p>
+<h3>Main Character Energy</h3>
+<p>Nature + style = elite frame.</p>
 </div>
 
 <div class="card">
 <img src="pic3.jpeg">
-<h3>3. Road Trips & Real Talks 🚗</h3>
-<p>
-Some friendships grow stronger on roads and journeys.
-This photo captures adventure, plans, laughter,
-and the brotherhood built along the way.
-</p>
+<h3>Road Trip Memories</h3>
+<p>Drives, talks, laughs and vibes.</p>
 </div>
 
 <div class="card">
 <img src="pic4.jpeg">
-<h3>4. Brothers By Choice 💙</h3>
-<p>
-Not all brothers are born in the same house.
-Some are chosen through friendship.
-This photo shows comfort, trust, and connection.
-</p>
+<h3>Brothers By Choice</h3>
+<p>Some bonds are stronger than blood.</p>
 </div>
 
 <div class="card">
 <img src="pic5.jpeg">
-<h3>5. Machine + Man of Taste 🚘</h3>
-<p>
-Cars suit people with vision.  
-Standing with confidence beside the car —
-this is style mixed with ambition.
-</p>
+<h3>Machine Meets Vision</h3>
+<p>Cars suit people with ambition.</p>
 </div>
 
 <div class="card">
 <img src="pic6.jpeg">
-<h3>6. Simple Days, Big Memories ☕</h3>
-<p>
-Even a casual sit and selfie becomes memorable
-when it’s with the right people.
-That’s what real friendship does.
-</p>
+<h3>Simple Days</h3>
+<p>Right people make normal days special.</p>
 </div>
 
 <div class="card">
 <img src="pic7.jpeg">
-<h3>7. Calm Strength 🌲</h3>
-<p>
-A peaceful frame with a peaceful person.
-Quiet people often carry the strongest minds.
-This photo feels mature and timeless.
-</p>
-</div>
-
-</div>
-
-<p class="quote">Photos fade. Memories stay forever.</p>
-</section>
-
-<!-- WHY YOU MATTER -->
-
-<section>
-<div class="title">Why You Matter ❤️</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>👂 You Listen</h3>
-<p>
-You understand people instead of just hearing them.
-</p>
-</div>
-
-<div class="card">
-<h3>🗣 You Speak Softly</h3>
-<p>
-No noise needed. Respect comes naturally.
-</p>
-</div>
-
-<div class="card">
-<h3>😂 You Bring Joy</h3>
-<p>
-Your humour changes the mood of any day.
-</p>
-</div>
-
-<div class="card">
-<h3>🤝 You Stay Real</h3>
-<p>
-That quality is priceless.
-</p>
+<h3>Quiet Strength</h3>
+<p>Calm outside, strong inside.</p>
 </div>
 
 </div>
 </section>
 
-<!-- MESSAGE -->
-
+<!-- SUCCESS METER -->
 <section>
-<div class="title">Message To My Brother 🎂</div>
+<div class="title">Success Speedometer 🚀</div>
+<p class="sub">Progress toward dream life:</p>
+
+<div class="bar">
+<div class="fill"></div>
+</div>
+
+<p class="quote">96% Loaded. Greatness Incoming.</p>
+</section>
+
+<!-- SECRET -->
+<section>
+<div class="title">Hidden Message 🎁</div>
+
+<a class="btn" onclick="secretMsg()">Open Secret</a>
+</section>
+
+<!-- FINAL -->
+<section>
+<div class="title">Birthday Wish 🎂</div>
 
 <p class="sub">
-Thank you for every laugh, every drive, every plan,
-every support, every memory, and every genuine moment.
-
-No matter how life changes,
-good friendships like ours remain valuable forever.
-
-May this year bring you success, peace, happiness,
-good health, dream cars, achievements, and everything you deserve.
+May you get success, peace, health, money,
+dream cars, and happiness beyond expectations.
 </p>
 
 <p class="quote">
-Happy Birthday Rohhith ❤️  
-Stay classy. Stay blessed. Stay winning.
+Stay classy. Stay blessed. Keep winning.
 </p>
 </section>
 
-<!-- END -->
-
 <section>
-<div class="title glow">From Baddies 😎</div>
-<p class="sub">
-A friendship built on memories, respect, laughter and loyalty.
-</p>
+<div class="title">From Baddies 😎</div>
+<p class="sub">Lifetime friendship only.</p>
 </section>
 
 <div class="footer">
-Made with love and respect for Rohhith 🤝
+Made with respect for Rohhith ❤️
 </div>
+
+<script>
+let txt="A Brother. A Listener. A Real One. A Lifetime Friend.";
+let i=0;
+function type(){
+if(i<txt.length){
+document.getElementById("typing").innerHTML += txt.charAt(i);
+i++;
+setTimeout(type,55);
+}
+}
+type();
+
+function toggleMusic(){
+let song=document.getElementById("song");
+if(song.paused){
+song.play();
+}else{
+song.pause();
+}
+}
+
+function secretMsg(){
+alert("No matter where life goes, I’ll always value this friendship da macha ❤️");
+}
+</script>
 
 </body>
 </html>
