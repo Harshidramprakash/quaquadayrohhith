@@ -46,7 +46,7 @@ padding:20px;
 }
 
 .hero h1{
-font-size:3.2rem;
+font-size:3.3rem;
 font-weight:900;
 color:#00ffff;
 text-shadow:0 0 20px #00ffff;
@@ -55,14 +55,13 @@ margin-bottom:10px;
 
 .hero h2{
 font-size:1.2rem;
-font-weight:400;
 color:#ddd;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .hero p{
-max-width:750px;
-line-height:1.8;
+max-width:850px;
+line-height:1.9;
 color:#bbb;
 }
 
@@ -72,7 +71,7 @@ margin-top:30px;
 padding:14px 30px;
 border-radius:30px;
 background:#00ffff;
-color:black;
+color:#000;
 font-weight:700;
 text-decoration:none;
 box-shadow:0 0 20px #00ffff88;
@@ -82,31 +81,30 @@ box-shadow:0 0 20px #00ffff88;
 font-size:2.2rem;
 font-weight:800;
 margin-bottom:15px;
-color:#fff;
 }
 
 .sub{
-max-width:800px;
+max-width:850px;
 margin:auto;
-color:#aaa;
 line-height:1.8;
+color:#aaa;
 }
 
-.card-wrap{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-max-width:1100px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:22px;
+max-width:1150px;
 margin:auto;
-margin-top:30px;
+margin-top:35px;
 }
 
 .card{
 background:#111;
-padding:22px;
-border-radius:20px;
+padding:20px;
+border-radius:18px;
 border:1px solid #222;
-box-shadow:0 0 20px #00ffff18;
+box-shadow:0 0 18px #00ffff18;
 transition:0.3s;
 }
 
@@ -115,44 +113,37 @@ transform:translateY(-8px);
 box-shadow:0 0 30px #00ffff44;
 }
 
+.card img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:15px;
+}
+
 .card h3{
 color:#00ffff;
 margin-bottom:10px;
+font-size:1.1rem;
 }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px;
-max-width:1100px;
-margin:auto;
-margin-top:30px;
-}
-
-.gallery img{
-width:100%;
-height:280px;
-object-fit:cover;
-border-radius:18px;
-box-shadow:0 0 18px #00ffff22;
-transition:0.3s;
-}
-
-.gallery img:hover{
-transform:scale(1.04);
+.card p{
+color:#bbb;
+line-height:1.7;
+font-size:0.95rem;
 }
 
 .quote{
-font-size:1.3rem;
-color:#00ffff;
-font-weight:600;
 margin-top:25px;
+font-size:1.25rem;
+font-weight:600;
+color:#00ffff;
 }
 
 .footer{
-padding:40px 20px;
-text-align:center;
+padding:40px;
 color:#888;
+text-align:center;
 }
 
 .glow{
@@ -160,14 +151,14 @@ animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-from{ text-shadow:0 0 10px #00ffff;}
-to{ text-shadow:0 0 25px #00ffff,0 0 45px #00ffff;}
+from{text-shadow:0 0 10px #00ffff;}
+to{text-shadow:0 0 28px #00ffff,0 0 45px #00ffff;}
 }
 
 @media(max-width:700px){
 .hero h1{font-size:2.4rem;}
 .title{font-size:1.8rem;}
-.gallery img{height:220px;}
+.card img{height:260px;}
 }
 </style>
 </head>
@@ -178,179 +169,217 @@ to{ text-shadow:0 0 25px #00ffff,0 0 45px #00ffff;}
 
 <section class="hero">
 <h1 class="glow">Happy Birthday Rohhith 🎉</h1>
-<h2>Luxury Taste • High IQ • Real One • Future Beast</h2>
+<h2>A Brother. A Listener. A Real One. A Lifetime Friend.</h2>
 
 <p>
-Today is not just another day.  
-Today the world got upgraded because a premium person was born.
-Soft spoken, sharp minded, funny character, and one of the realest people around.
+Some friendships are casual. Some are temporary.  
+But some friendships become part of life itself.  
+You are one of those rare people who turned normal days into memorable moments,
+laughs into memories, and friendship into something valuable.
 </p>
 
-<a href="#about" class="btn">Enter Birthday Mode 😎</a>
+<a href="#about" class="btn">Open Memories ❤️</a>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT FRIENDSHIP -->
 
 <section id="about">
-<div class="title">Who Is Rohhith?</div>
+<div class="title">Our Valuable Friendship 🤝</div>
 
 <p class="sub">
-Not everyone can be calm, smart, funny and respected at the same time.  
-But somehow you do it naturally.
+Friendship is not only about being together in photos.  
+It is about trust, support, random late conversations, laughing for no reason,
+being present during hard times, and knowing someone is always there.
+
+You are that kind of friend.
 </p>
 
-<div class="card-wrap">
+<div class="grid">
 
 <div class="card">
-<h3>🧠 IQ Level</h3>
-<p>Ideas loading 24/7. Brain never off.</p>
+<h3>🤍 Real Bond</h3>
+<p>
+No fake vibes. No acting. Just genuine friendship.
+</p>
 </div>
 
 <div class="card">
-<h3>🎭 Funny Mode</h3>
-<p>Random expressions. Unexpected comedy.</p>
+<h3>😂 Unlimited Memories</h3>
+<p>
+Every trip, every meet-up, every random joke became a memory.
+</p>
 </div>
 
 <div class="card">
-<h3>🤝 Loyalty</h3>
-<p>Solid friend. Rare category.</p>
+<h3>🧠 Respect</h3>
+<p>
+Smart mind, calm nature, and a strong heart.
+</p>
 </div>
 
 <div class="card">
-<h3>👑 Presence</h3>
-<p>Quiet style. Strong vibe.</p>
+<h3>👑 Rare Person</h3>
+<p>
+Good people are rare. Real friends are rarer.
+</p>
 </div>
 
 </div>
 </section>
 
-<!-- PHOTO GALLERY -->
+<!-- PHOTO STORIES -->
 
 <section>
-<div class="title">The Face Behind The Legend 📸</div>
+<div class="title">Every Picture Has A Story 📸</div>
 
-<p class="sub">
-Some premium moments of the birthday boy.
-</p>
+<div class="grid">
 
-<div class="gallery">
+<div class="card">
 <img src="pic1.jpeg">
+<h3>1. Confidence In Silence 😎</h3>
+<p>
+Standing in class with style and confidence.  
+Even in simple moments, you carry presence.
+The calm smile says everything.
+</p>
+</div>
+
+<div class="card">
 <img src="pic2.jpeg">
+<h3>2. Nature + Class 🌿</h3>
+<p>
+This picture feels premium.  
+Leaning against the tree like life is easy.
+Pure style, peace, and main character energy.
+</p>
+</div>
+
+<div class="card">
 <img src="pic3.jpeg">
+<h3>3. Road Trips & Real Talks 🚗</h3>
+<p>
+Some friendships grow stronger on roads and journeys.
+This photo captures adventure, plans, laughter,
+and the brotherhood built along the way.
+</p>
+</div>
+
+<div class="card">
 <img src="pic4.jpeg">
+<h3>4. Brothers By Choice 💙</h3>
+<p>
+Not all brothers are born in the same house.
+Some are chosen through friendship.
+This photo shows comfort, trust, and connection.
+</p>
+</div>
+
+<div class="card">
 <img src="pic5.jpeg">
+<h3>5. Machine + Man of Taste 🚘</h3>
+<p>
+Cars suit people with vision.  
+Standing with confidence beside the car —
+this is style mixed with ambition.
+</p>
+</div>
+
+<div class="card">
 <img src="pic6.jpeg">
+<h3>6. Simple Days, Big Memories ☕</h3>
+<p>
+Even a casual sit and selfie becomes memorable
+when it’s with the right people.
+That’s what real friendship does.
+</p>
+</div>
+
+<div class="card">
 <img src="pic7.jpeg">
+<h3>7. Calm Strength 🌲</h3>
+<p>
+A peaceful frame with a peaceful person.
+Quiet people often carry the strongest minds.
+This photo feels mature and timeless.
+</p>
 </div>
 
-<p class="quote">Main character energy detected 😎</p>
+</div>
+
+<p class="quote">Photos fade. Memories stay forever.</p>
 </section>
 
-<!-- WHY DIFFERENT -->
+<!-- WHY YOU MATTER -->
 
 <section>
-<div class="title">Why Rohhith Different ❤️</div>
+<div class="title">Why You Matter ❤️</div>
 
-<div class="card-wrap">
+<div class="grid">
 
 <div class="card">
-<h3>🗣 Soft Speaker</h3>
-<p>Never loud. Always respected.</p>
+<h3>👂 You Listen</h3>
+<p>
+You understand people instead of just hearing them.
+</p>
 </div>
 
 <div class="card">
-<h3>👂 Good Listener</h3>
-<p>Actually listens. Rare skill now.</p>
+<h3>🗣 You Speak Softly</h3>
+<p>
+No noise needed. Respect comes naturally.
+</p>
 </div>
 
 <div class="card">
-<h3>😂 Funny Soul</h3>
-<p>Can turn boring moments into fun.</p>
+<h3>😂 You Bring Joy</h3>
+<p>
+Your humour changes the mood of any day.
+</p>
 </div>
 
 <div class="card">
-<h3>👨‍👨‍👦 Dad's Boy</h3>
-<p>Family values. Strong roots.</p>
+<h3>🤝 You Stay Real</h3>
+<p>
+That quality is priceless.
+</p>
 </div>
 
 </div>
 </section>
 
-<!-- DREAM GARAGE -->
+<!-- MESSAGE -->
 
 <section>
-<div class="title">Dream Garage Incoming 🚘</div>
-
-<div class="card-wrap">
-
-<div class="card">
-<h3>BMW M5</h3>
-<p>Brains + power.</p>
-</div>
-
-<div class="card">
-<h3>G63</h3>
-<p>Beast with attitude.</p>
-</div>
-
-<div class="card">
-<h3>Velar</h3>
-<p>Pure class machine.</p>
-</div>
-
-<div class="card">
-<h3>Defender</h3>
-<p>Built like a tank.</p>
-</div>
-
-</div>
-
-<p class="quote">Manifesting keys soon 🔑</p>
-</section>
-
-<!-- FRIENDSHIP -->
-
-<section>
-<div class="title">From Baddies 🤝</div>
+<div class="title">Message To My Brother 🎂</div>
 
 <p class="sub">
-From random jokes to deep talks,  
-from useless plans to best memories,  
-friendship like this always matters.
+Thank you for every laugh, every drive, every plan,
+every support, every memory, and every genuine moment.
+
+No matter how life changes,
+good friendships like ours remain valuable forever.
+
+May this year bring you success, peace, happiness,
+good health, dream cars, achievements, and everything you deserve.
 </p>
 
 <p class="quote">
-Thanks for being real da macha ❤️
+Happy Birthday Rohhith ❤️  
+Stay classy. Stay blessed. Stay winning.
 </p>
 </section>
 
-<!-- WISH -->
+<!-- END -->
 
 <section>
-<div class="title">Birthday Wish 🎂</div>
-
+<div class="title glow">From Baddies 😎</div>
 <p class="sub">
-May this year bring success, peace, happiness, money,
-good health, growth, and every dream you've been working for quietly.
-</p>
-
-<p class="quote">
-Stay classy. Stay dangerous. Keep winning.
-</p>
-</section>
-
-<!-- FINAL -->
-
-<section>
-<div class="title glow">Happy Birthday G… 🖤</div>
-
-<p class="sub">
-Another year older. Still elite.
+A friendship built on memories, respect, laughter and loyalty.
 </p>
 </section>
 
 <div class="footer">
-Made with respect by Baddies 😎
+Made with love and respect for Rohhith 🤝
 </div>
 
 </body>
