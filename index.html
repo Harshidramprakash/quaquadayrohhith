@@ -1,9 +1,12 @@
+<!-- PREMIUM FINAL VERSION -->
+<!-- Paste this into your current index.html -->
+<!-- Keeps all old content style, adds more scroll content, premium effects, music button, long page sections -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Happy Birthday Rohhith 🎉</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
@@ -14,7 +17,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 scroll-behavior:smooth;
-font-family:'Poppins',sans-serif;
+font-family:Poppins,sans-serif;
 }
 
 body{
@@ -23,192 +26,64 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* Background glow */
-body::before{
+/* animated bg */
+body:before{
 content:"";
 position:fixed;
 inset:0;
+z-index:-1;
 background:
 radial-gradient(circle at top left,#00ffff22,transparent 25%),
 radial-gradient(circle at bottom right,#ff00ff22,transparent 25%);
-z-index:-1;
-animation:bgmove 8s linear infinite alternate;
+animation:bg 8s infinite alternate;
 }
 
-@keyframes bgmove{
-0%{filter:hue-rotate(0deg);}
-100%{filter:hue-rotate(40deg);}
+@keyframes bg{
+0%{filter:hue-rotate(0deg)}
+100%{filter:hue-rotate(40deg)}
 }
 
-/* ================= GAME ================= */
-
-#gameScreen{
-position:fixed;
-inset:0;
-background:#000;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-transition:1s;
-}
-
-#gameTitle{
-font-size:3rem;
-font-weight:900;
-color:#00ffff;
-text-shadow:0 0 15px #00ffff;
-margin-bottom:20px;
+section{
+padding:100px 8%;
 text-align:center;
 }
 
-#countdown{
-font-size:5rem;
-height:80px;
+h1{
+font-size:3rem;
 font-weight:900;
-color:#ffd700;
-text-shadow:0 0 15px #ffd700;
+margin-bottom:20px;
 }
 
-#speedometer{
-font-size:1.4rem;
-font-weight:700;
-margin-bottom:10px;
+p{
+line-height:1.8;
+font-size:1.1rem;
+color:#ddd;
+max-width:950px;
+margin:auto;
+}
+
+.glow{
 color:#00ffff;
-}
-
-#nitroBar{
-width:260px;
-height:14px;
-background:#111;
-border-radius:20px;
-overflow:hidden;
-margin-bottom:15px;
-border:1px solid #333;
-}
-
-#nitroFill{
-height:100%;
-width:100%;
-background:linear-gradient(90deg,#00ffff,#00ff66,#ffd700);
-}
-
-#road{
-position:relative;
-width:95%;
-max-width:1100px;
-height:320px;
-overflow:hidden;
-border-radius:25px;
-border:2px solid #333;
-background:
-linear-gradient(#111,#111),
-repeating-linear-gradient(to right,#fff 0,#fff 40px,transparent 40px,transparent 90px);
-background-size:100% 100%,140px 6px;
-background-position:center center,0 157px;
-background-repeat:no-repeat,repeat-x;
-animation:roadMove .12s linear infinite;
-box-shadow:0 0 20px #00ffff33;
-}
-
-@keyframes roadMove{
-from{background-position:center center,0 157px;}
-to{background-position:center center,-140px 157px;}
-}
-
-.car{
-position:absolute;
-left:20px;
-font-size:4rem;
-transition:.08s linear;
-}
-
-#enemyCar{top:60px;}
-#playerCar{top:205px;}
-
-#finishLine{
-position:absolute;
-right:10px;
-top:120px;
-font-size:4rem;
+text-shadow:0 0 20px #00ffff;
 }
 
 .btn{
-margin-top:20px;
-padding:14px 32px;
-border:none;
+display:inline-block;
+margin-top:25px;
+padding:14px 30px;
+background:#00ffff;
+color:#000;
+font-weight:800;
 border-radius:40px;
-background:linear-gradient(90deg,#00ffff,#ffd700);
-font-weight:900;
+text-decoration:none;
+box-shadow:0 0 20px #00ffff;
+transition:.3s;
 cursor:pointer;
-font-size:1rem;
-box-shadow:0 0 18px #00ffff;
+border:none;
 }
 
 .btn:hover{
 transform:scale(1.05);
-}
-
-#raceText{
-margin-top:15px;
-color:#aaa;
-}
-
-/* ================= MAIN PAGE ================= */
-
-#mainPage{
-display:none;
-animation:fadeIn 1.5s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-section{
-padding:90px 8%;
-text-align:center;
-}
-
-.hero h1{
-font-size:4rem;
-font-weight:900;
-color:#00ffff;
-text-shadow:0 0 25px #00ffff;
-animation:pulse 2s infinite alternate;
-}
-
-@keyframes pulse{
-from{transform:scale(1);}
-to{transform:scale(1.03);}
-}
-
-.hero p{
-margin-top:18px;
-font-size:1.2rem;
-max-width:900px;
-margin-inline:auto;
-line-height:1.8;
-color:#ddd;
-}
-
-.glowBtn{
-margin-top:30px;
-display:inline-block;
-padding:14px 34px;
-border-radius:40px;
-background:#00ffff;
-color:#000;
-font-weight:800;
-text-decoration:none;
-box-shadow:0 0 20px #00ffff;
-transition:.3s;
-}
-
-.glowBtn:hover{
-transform:scale(1.06);
 }
 
 .cards{
@@ -221,20 +96,15 @@ margin-top:40px;
 .card{
 background:#111;
 padding:30px;
-border-radius:20px;
+border-radius:18px;
 border:1px solid #222;
-box-shadow:0 0 20px #00ffff22;
+box-shadow:0 0 15px #00ffff22;
 transition:.4s;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px #00ffff88;
-}
-
-.card h3{
-color:#00ffff;
-margin-bottom:10px;
+transform:translateY(-8px);
+box-shadow:0 0 20px #00ffff99;
 }
 
 .timeline{
@@ -245,17 +115,17 @@ margin-top:40px;
 }
 
 .timeline div{
-padding:18px;
 background:#111;
+padding:20px;
+margin-bottom:18px;
 border-left:4px solid #00ffff;
-margin-bottom:20px;
-border-radius:12px;
+border-radius:14px;
 transition:.3s;
 }
 
 .timeline div:hover{
 transform:translateX(8px);
-box-shadow:0 0 20px #00ffff22;
+box-shadow:0 0 15px #00ffff33;
 }
 
 .gallery{
@@ -267,7 +137,7 @@ margin-top:40px;
 
 .photo{
 background:#111;
-padding:15px;
+padding:14px;
 border-radius:18px;
 box-shadow:0 0 15px #00ffff22;
 transition:.4s;
@@ -284,279 +154,306 @@ object-fit:cover;
 border-radius:14px;
 }
 
-.photo h4{
-margin-top:12px;
+.photo h3{
+margin-top:10px;
 color:#00ffff;
+}
+
+.quote{
+font-size:1.4rem;
+font-style:italic;
+margin-top:30px;
+color:#ffd700;
 }
 
 footer{
 padding:50px;
 text-align:center;
 color:#aaa;
-font-size:1rem;
 }
 
-.hidden{
-margin-top:25px;
-cursor:pointer;
-color:#00ffff;
-font-weight:700;
+/* floating hearts */
+.heart{
+position:fixed;
+bottom:-50px;
+font-size:25px;
+animation:fly 8s linear infinite;
+opacity:.7;
 }
 
-#secret{
-display:none;
-margin-top:15px;
-font-size:1.1rem;
-color:#ffd700;
-animation:fadeIn 1s;
+@keyframes fly{
+0%{transform:translateY(0) rotate(0deg)}
+100%{transform:translateY(-110vh) rotate(360deg)}
+}
+
+.musicBtn{
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:999;
 }
 
 @media(max-width:768px){
-.hero h1{font-size:2.4rem;}
-#gameTitle{font-size:2rem;}
+h1{font-size:2.2rem}
 }
 </style>
 </head>
 <body>
 
-<!-- SONG -->
-<audio id="song" loop preload="auto">
-<source src="Bang-Bang-Bang.mp3" type="audio/mpeg">
+<audio id="song" loop preload="auto" playsinline>
+<source src="./Bang-Bang-Bang.mp3" type="audio/mpeg">
 </audio>
 
-<!-- GAME -->
+<button class="btn musicBtn" onclick="toggleMusic()">🔊 Music</button>
 
-<div id="gameScreen">
+<!-- HERO -->
+<section>
 
-<h1 id="gameTitle">🏁 Rohhith vs Baddies</h1>
-
-<div id="countdown"></div>
-
-<div id="speedometer">0 KM/H</div>
-
-<div id="nitroBar">
-<div id="nitroFill"></div>
-</div>
-
-<div id="road">
-<div id="enemyCar" class="car">🏎️🔥</div>
-<div id="playerCar" class="car">🚘💨</div>
-<div id="finishLine">🏁</div>
-</div>
-
-<p id="raceText">Mac Keys: → / D / Space / N for Nitro</p>
-
-<button class="btn" onclick="startRace()">START ENGINE</button>
-
-</div>
-
-<!-- MAIN PAGE -->
-
-<div id="mainPage">
-
-<section class="hero">
-<h1>Happy Birthday Rohhith 🎉</h1>
+<h1 class="glow">Happy Birthday Rohhith 🎉</h1>
 
 <p>
-A Brother. A Listener. A Real One.  
-Some friendships are casual. Some temporary.  
-But ours became a part of life itself.
+A Brother. A Listener. A Real One. A Lifetime Friend.
+Some people enter life casually. Some stay for a season.
+But some become part of your story forever.
+You are one of those rare souls who turned ordinary days
+into unforgettable memories.
 </p>
 
-<a href="#about" class="glowBtn">Open Memories ❤️</a>
+<a href="#about" class="btn">Open Memories ❤️</a>
+
 </section>
 
+<!-- FRIENDSHIP -->
 <section id="about">
-<h1 style="font-size:3rem;color:#fff;">Our Valuable Friendship 🤝</h1>
 
-<p style="margin-top:20px;color:#ccc;max-width:900px;margin-inline:auto;">
-Friendship is not about photos alone. It is about trust, support, bunking class,
-random trips, laughter without reason, and always having someone beside you.
-You are that rare kind of friend.
+<h1>Our Valuable Friendship 🤝</h1>
+
+<p>
+Friendship is not just about hanging out or taking pictures.
+It is about trust, loyalty, support during hard times,
+laughing for no reason, understanding silence,
+and always knowing someone is there.
+That is exactly what you are da machan.
 </p>
 
 <div class="cards">
-<div class="card"><h3>❤️ Real Bond</h3><p>No fake vibes. Pure brotherhood.</p></div>
-<div class="card"><h3>😂 Unlimited Laughs</h3><p>Every meet-up became a memory.</p></div>
-<div class="card"><h3>🧠 Respect</h3><p>Smart mind, calm heart.</p></div>
-<div class="card"><h3>👑 Rare Person</h3><p>Good people are rare. You are rarer.</p></div>
+
+<div class="card">
+<h3>❤️ Real Bond</h3>
+<p>No fake vibes. No acting. Just genuine brotherhood.</p>
 </div>
+
+<div class="card">
+<h3>😂 Countless Laughs</h3>
+<p>Every meet-up somehow became comedy gold.</p>
+</div>
+
+<div class="card">
+<h3>🧠 Respect</h3>
+<p>Smart mind. Good heart. Strong mindset.</p>
+</div>
+
+<div class="card">
+<h3>👑 Rare Person</h3>
+<p>Good people are rare. Real ones are rarer.</p>
+</div>
+
+</div>
+
 </section>
 
+<!-- TIMELINE -->
 <section>
-<h1 style="font-size:3rem;">Timeline Of Friendship 🚗</h1>
+
+<h1>Timeline Of Friendship 🚘</h1>
 
 <div class="timeline">
 
-<div><strong>AUG 27 - First Meet</strong><br>Two random people at college. Nobody knew a lifetime friendship started that day.</div>
+<div>
+<strong>📅 AUG 27 – First Meet</strong><br>
+Two random people at college.
+No one knew a lifetime friendship started that day.
+</div>
 
-<div><strong>Bonding Started</strong><br>Conversations became trust. Normal talks became daily routine.</div>
+<div>
+<strong>🤝 Bonding Started</strong><br>
+Small talks became long talks.
+Normal days became better days.
+</div>
 
-<div><strong>Trips Era</strong><br>First Ooty 🌄 → Anaikatti 🌿 → VIT 🚘 Roads changed, but company stayed elite.</div>
+<div>
+<strong>🌄 Ooty Trip</strong><br>
+Cold breeze, mountain roads, laughter and madness.
+First unforgettable travel chapter.
+</div>
 
-<div><strong>Bunk Legends</strong><br>Classes were missed. Memories were attended.</div>
+<div>
+<strong>🌿 Anaikatti Ride</strong><br>
+Roads were scenic.
+Conversations were elite.
+Vibes unmatched.
+</div>
 
-<div><strong>Countless Laughs 😂</strong><br>Inside jokes nobody else can understand.</div>
+<div>
+<strong>🏫 VIT Visit</strong><br>
+New place. Same duo energy.
+More memories unlocked.
+</div>
 
-<div><strong>Today ❤️</strong><br>Not just friends anymore. Brotherhood.</div>
+<div>
+<strong>🏃 Bunk Legends</strong><br>
+Classes were skipped.
+But life lessons and memories were attended.
+</div>
+
+<div>
+<strong>😂 Unlimited Laughs</strong><br>
+Inside jokes nobody else can understand.
+</div>
+
+<div>
+<strong>❤️ Today</strong><br>
+No longer just friends.
+Brotherhood.
+</div>
 
 </div>
+
 </section>
 
+<!-- GALLERY -->
 <section>
-<h1 style="font-size:3rem;">Every Picture Has A Story 📸</h1>
+
+<h1>Every Picture Has A Story 📸</h1>
 
 <div class="gallery">
 
-<div class="photo"><img src="pic1.jpeg"><h4>The Bald Look 😂</h4><p>Confidence level max. Style never drops.</p></div>
+<div class="photo">
+<img src="pic1.jpeg" loading="lazy">
+<h3>Confidence Mode</h3>
+<p>Style changes. Aura doesn’t.</p>
+</div>
 
-<div class="photo"><img src="pic2.jpeg"><h4>Park Hero 🌿</h4><p>Standing like a movie intro shot.</p></div>
+<div class="photo">
+<img src="pic2.jpeg" loading="lazy">
+<h3>Main Character Shot</h3>
+<p>Standing casually, looking legendary.</p>
+</div>
 
-<div class="photo"><img src="pic3.jpeg"><h4>Swift Days 🚘</h4><p>Cars + roads + friendship = elite combo.</p></div>
+<div class="photo">
+<img src="pic3.jpeg" loading="lazy">
+<h3>Roadside Brotherhood</h3>
+<p>Cars + roads + memories = elite combo.</p>
+</div>
 
-<div class="photo"><img src="pic4.jpeg"><h4>Brother Frame 💙</h4><p>One picture. Thousand memories.</p></div>
+<div class="photo">
+<img src="pic4.jpeg" loading="lazy">
+<h3>Blue Bros</h3>
+<p>One frame. Thousand emotions.</p>
+</div>
 
-<div class="photo"><img src="pic5.jpeg"><h4>Fortuner Boss 😎</h4><p>Even the car knows who owns the vibe.</p></div>
+<div class="photo">
+<img src="pic5.jpeg" loading="lazy">
+<h3>Fortuner Boss Entry</h3>
+<p>Even the car looks proud.</p>
+</div>
 
-<div class="photo"><img src="pic6.jpeg"><h4>Cafe Talks ☕</h4><p>Normal meet-up turned into core memory.</p></div>
+<div class="photo">
+<img src="pic6.jpeg" loading="lazy">
+<h3>Chill Meet-up</h3>
+<p>Normal hangout turned into core memory.</p>
+</div>
 
-<div class="photo"><img src="pic7.jpeg"><h4>Forest Edit 🌲</h4><p>Main character energy detected.</p></div>
+<div class="photo">
+<img src="pic7.jpeg" loading="lazy">
+<h3>Forest Edit</h3>
+<p>Pure cinematic vibes.</p>
+</div>
 
 </div>
 
-<div class="hidden" onclick="showSecret()">Tap For Hidden Message 👀</div>
-<div id="secret">No matter where life goes... I’ll always be there da machan ❤️</div>
+</section>
+
+<!-- LONG CONTENT -->
+<section>
+
+<h1>Things I Appreciate About You 🌟</h1>
+
+<div class="cards">
+
+<div class="card"><p>You listen when it matters.</p></div>
+<div class="card"><p>You stay calm when others panic.</p></div>
+<div class="card"><p>You support without showing off.</p></div>
+<div class="card"><p>You make every trip memorable.</p></div>
+<div class="card"><p>You respect people genuinely.</p></div>
+<div class="card"><p>You are built different da.</p></div>
+
+</div>
+
+</section>
+
+<section>
+
+<h1>Birthday Wish 🎂</h1>
+
+<p>
+May this year bring success, peace, health,
+wealth, happiness, adventures,
+new cars, more trips, bigger wins,
+and every dream becoming reality.
+Keep shining machan.
+You deserve greatness.
+</p>
+
+<div class="quote">
+Some friends become family without blood.
+</div>
+
+</section>
+
+<section>
+
+<h1>Hidden Truth 👀</h1>
+
+<p>
+No matter where life goes,
+how busy things become,
+or how many years pass...
+our bond stays strong.
+Always.
+</p>
 
 </section>
 
 <footer>
-Made with brotherhood, memories & too much respect 💯
+Made with memories, respect & brotherhood 💯
 </footer>
 
-</div>
-
 <script>
-let playerPos=20;
-let enemyPos=20;
-let speed=0;
-let nitro=100;
-let raceStarted=false;
-let raceEnded=false;
-let enemyRun;
-
-function startRace(){
-
-document.querySelector(".btn").style.display="none";
-
 const song=document.getElementById("song");
-song.volume=1;
-song.play().then(()=>{}).catch(()=>{});
 
-setTimeout(()=>{
+function toggleMusic(){
+if(song.paused){
 song.play().catch(()=>{});
-},1000);
-
-traffic();
-}
-
-function traffic(){
-
-setTimeout(()=>countdown.innerHTML="3",500);
-setTimeout(()=>countdown.innerHTML="2",1300);
-setTimeout(()=>countdown.innerHTML="1",2100);
-
-setTimeout(()=>{
-countdown.innerHTML="GO!";
-beginRace();
-},2900);
-}
-
-function beginRace(){
-
-raceStarted=true;
-
-enemyRun=setInterval(()=>{
-
-if(!raceEnded){
-enemyPos += Math.random()*9+8;
-enemyCar.style.left=enemyPos+"px";
-}
-
-},120);
-
-}
-
-function accelerate(power=1){
-
-if(!raceStarted || raceEnded)return;
-
-playerPos += 28*power;
-speed += 10*power;
-
-if(speed>320)speed=320;
-
-playerCar.style.left=playerPos+"px";
-speedometer.innerHTML=Math.floor(speed)+" KM/H";
-
-checkWin();
-}
-
-function nitroBoost(){
-
-if(nitro<=0)return;
-
-nitro -= 18;
-if(nitro<0)nitro=0;
-
-nitroFill.style.width=nitro+"%";
-
-accelerate(2.7);
-}
-
-function checkWin(){
-
-if(playerPos > window.innerWidth*0.76){
-
-raceEnded=true;
-clearInterval(enemyRun);
-
-raceText.innerHTML="🏆 Rohhith Wins The Race!";
-
-setTimeout(()=>{
-gameScreen.style.opacity="0";
-
-setTimeout(()=>{
-gameScreen.style.display="none";
-mainPage.style.display="block";
-window.scrollTo(0,0);
-},900);
-
-},1800);
-
+}else{
+song.pause();
 }
 }
 
-document.addEventListener("keydown",(e)=>{
+/* auto attempt after click anywhere */
+document.body.addEventListener("click",()=>{
+song.play().catch(()=>{});
+},{once:true});
 
-if(
-e.key==="ArrowRight"||
-e.key==="d"||
-e.key==="D"||
-e.code==="Space"
-){
-accelerate();
-}
-
-if(e.key==="n"||e.key==="N"){
-nitroBoost();
-}
-
-});
-
-road.addEventListener("click",()=>accelerate());
-
-function showSecret(){
-secret.style.display="block";
+/* floating hearts */
+for(let i=0;i<18;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💙";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(5+Math.random()*5)+"s";
+h.style.fontSize=(18+Math.random()*18)+"px";
+document.body.appendChild(h);
 }
 </script>
 
