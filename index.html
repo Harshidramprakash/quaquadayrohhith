@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Happy Birthday Rohhith 🎉</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -39,8 +38,45 @@ animation:bg 8s infinite alternate;
 100%{filter:hue-rotate(40deg)}
 }
 
-/* ================= RACE INTRO ================= */
+/* loader */
+#loader{
+position:fixed;
+inset:0;
+background:#000;
+z-index:999999;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:1s;
+}
 
+.loaderBox{
+width:420px;
+max-width:90%;
+text-align:center;
+}
+
+.loaderBox h1{
+font-size:2rem;
+color:#00ffff;
+margin-bottom:20px;
+text-shadow:0 0 20px #00ffff;
+}
+
+.barWrap{
+height:15px;
+background:#111;
+border-radius:50px;
+overflow:hidden;
+}
+
+#loadBar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00ffff,#00ff88,#ffd700);
+}
+
+/* race intro */
 #raceIntro{
 min-height:100vh;
 display:flex;
@@ -49,7 +85,6 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:30px;
-background:#000;
 transition:1s;
 }
 
@@ -79,7 +114,6 @@ width:22px;
 height:22px;
 border-radius:50%;
 background:#222;
-box-shadow:0 0 8px #000;
 transition:.3s;
 }
 
@@ -89,14 +123,13 @@ width:95%;
 max-width:1100px;
 height:260px;
 background:#111;
-border:2px solid #222;
 border-radius:25px;
 position:relative;
 overflow:hidden;
-box-shadow:0 0 20px #00ffff22;
+border:2px solid #222;
 }
 
-#track::before{
+#track:before{
 content:"";
 position:absolute;
 left:0;
@@ -111,12 +144,12 @@ transparent 35px,
 transparent 70px
 );
 transform:translateY(-50%);
-animation:roadmove .3s linear infinite;
+animation:road .3s linear infinite;
 }
 
-@keyframes roadmove{
-from{background-position:0 0;}
-to{background-position:-70px 0;}
+@keyframes road{
+from{background-position:0 0}
+to{background-position:-70px 0}
 }
 
 #car1,#car2{
@@ -126,14 +159,8 @@ left:20px;
 transition:.07s linear;
 }
 
-#car1{
-top:40px;
-filter:drop-shadow(0 0 12px #00ffff);
-}
-
-#car2{
-bottom:40px;
-}
+#car1{top:40px}
+#car2{bottom:40px}
 
 .finishLine{
 position:absolute;
@@ -155,59 +182,28 @@ margin-top:18px;
 font-size:1.3rem;
 font-weight:800;
 color:#00ffff;
-text-shadow:0 0 12px #00ffff;
 }
 
-.raceBtn{
+.raceBtn,.btn{
 margin-top:25px;
-padding:14px 34px;
+padding:14px 30px;
 border:none;
 border-radius:40px;
 background:#00ffff;
 color:#000;
 font-weight:800;
 cursor:pointer;
+text-decoration:none;
+display:inline-block;
 box-shadow:0 0 20px #00ffff;
-font-size:1rem;
 }
 
 .controls{
 margin-top:18px;
 color:#aaa;
-font-size:.95rem;
 }
 
-.shake{
-animation:shake .08s infinite;
-}
-
-@keyframes shake{
-0%{transform:translateX(0)}
-25%{transform:translateY(-1px)}
-50%{transform:translateX(1px)}
-75%{transform:translateY(1px)}
-100%{transform:translateX(0)}
-}
-
-.boost{
-filter:drop-shadow(0 0 18px #ffd700);
-}
-
-.winMsg{
-margin-top:20px;
-font-size:1.25rem;
-font-weight:800;
-color:#ffd700;
-animation:fadeUp .8s ease;
-}
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-/* ================= MAIN SITE ================= */
-
+/* main website */
 #mainWebsite{
 display:none;
 }
@@ -236,44 +232,30 @@ color:#00ffff;
 text-shadow:0 0 20px #00ffff;
 }
 
-.btn{
-display:inline-block;
-margin-top:25px;
-padding:14px 30px;
-background:#00ffff;
-color:#000;
-font-weight:800;
-border-radius:40px;
-text-decoration:none;
-box-shadow:0 0 20px #00ffff;
-transition:.3s;
-cursor:pointer;
-border:none;
-}
-
-.btn:hover{
-transform:scale(1.05);
-}
-
-.cards{
+.cards,.gallery,.garageGrid,.achGrid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
+gap:24px;
 margin-top:40px;
 }
 
-.card{
+.card,.photo,.garageCard,.achCard{
 background:#111;
-padding:30px;
+padding:25px;
 border-radius:18px;
-border:1px solid #222;
 box-shadow:0 0 15px #00ffff22;
-transition:.4s;
 }
 
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 20px #00ffff99;
+.photo img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.photo h3{
+margin-top:10px;
+color:#00ffff;
 }
 
 .timeline{
@@ -289,43 +271,6 @@ padding:20px;
 margin-bottom:18px;
 border-left:4px solid #00ffff;
 border-radius:14px;
-transition:.3s;
-}
-
-.timeline div:hover{
-transform:translateX(8px);
-box-shadow:0 0 15px #00ffff33;
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:24px;
-margin-top:40px;
-}
-
-.photo{
-background:#111;
-padding:14px;
-border-radius:18px;
-box-shadow:0 0 15px #00ffff22;
-transition:.4s;
-}
-
-.photo:hover{
-transform:translateY(-8px) scale(1.02);
-}
-
-.photo img{
-width:100%;
-height:320px;
-object-fit:cover;
-border-radius:14px;
-}
-
-.photo h3{
-margin-top:10px;
-color:#00ffff;
 }
 
 .quote{
@@ -339,6 +284,13 @@ footer{
 padding:50px;
 text-align:center;
 color:#aaa;
+}
+
+.musicBtn{
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:9999;
 }
 
 /* floating hearts */
@@ -356,11 +308,55 @@ pointer-events:none;
 100%{transform:translateY(-110vh) rotate(360deg)}
 }
 
-.musicBtn{
+/* popup */
+#finalPopup{
 position:fixed;
-right:20px;
-bottom:20px;
-z-index:999;
+inset:0;
+background:#000000c9;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.popupCard{
+background:#111;
+padding:35px;
+border-radius:18px;
+max-width:450px;
+text-align:center;
+}
+
+.popupCard button{
+margin-top:20px;
+padding:12px 22px;
+border:none;
+border-radius:30px;
+background:#00ffff;
+font-weight:800;
+cursor:pointer;
+}
+
+/* respect bar */
+.meterWrap{
+height:40px;
+background:#111;
+border-radius:50px;
+overflow:hidden;
+max-width:800px;
+margin:auto;
+}
+
+.meterBar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00ffff,#00ff88,#ffd700);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+color:#000;
+transition:2s;
 }
 
 @media(max-width:768px){
@@ -373,12 +369,31 @@ h1{font-size:2.2rem}
 </head>
 <body>
 
+<!-- loader -->
+<div id="loader">
+<div class="loaderBox">
+<h1>Loading Memories...</h1>
+<div class="barWrap">
+<div id="loadBar"></div>
+</div>
+<p id="loadText">0%</p>
+</div>
+</div>
+
+<!-- popup -->
+<div id="finalPopup">
+<div class="popupCard">
+<h2>One More Thing ❤️</h2>
+<p>Thanks for being one of the realest people in life.<br>Rare people are remembered forever.</p>
+<button onclick="closePopup()">Close</button>
+</div>
+</div>
+
 <audio id="song" loop preload="auto" playsinline>
 <source src="./Bang-Bang-Bang.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ================= RACE INTRO ================= -->
-
+<!-- race intro -->
 <div id="raceIntro">
 
 <h1 class="raceTitle">🏁 Rohhith Birthday Grand Prix</h1>
@@ -411,15 +426,13 @@ Mobile: Tap the track
 
 </div>
 
-<!-- ================= MAIN WEBSITE ================= -->
-
+<!-- main site -->
 <div id="mainWebsite">
 
 <button class="btn musicBtn" onclick="toggleMusic()">🔊 Music</button>
 
 <section>
 <h1 class="glow">Happy Birthday Rohhith 🎉</h1>
-
 <p>
 A Brother. A Listener. A Real One. A Lifetime Friend.
 Some people enter life casually. Some stay for a season.
@@ -427,67 +440,67 @@ But some become part of your story forever.
 You are one of those rare souls who turned ordinary days
 into unforgettable memories.
 </p>
-
 <a href="#about" class="btn">Open Memories ❤️</a>
 </section>
 
 <section id="about">
 <h1>Our Valuable Friendship 🤝</h1>
-
 <p>
-Friendship is not just about hanging out or taking pictures.
-It is about trust, loyalty, support during hard times,
+Friendship is trust, loyalty, support during hard times,
 laughing for no reason, understanding silence,
 and always knowing someone is there.
 That is exactly what you are da machan.
 </p>
 
 <div class="cards">
-<div class="card"><h3>❤️ Real Bond</h3><p>No fake vibes. No acting. Just genuine brotherhood.</p></div>
-<div class="card"><h3>😂 Countless Laughs</h3><p>Every meet-up somehow became comedy gold.</p></div>
-<div class="card"><h3>🧠 Respect</h3><p>Smart mind. Good heart. Strong mindset.</p></div>
-<div class="card"><h3>👑 Rare Person</h3><p>Good people are rare. Real ones are rarer.</p></div>
+<div class="card">❤️ Real Bond</div>
+<div class="card">😂 Countless Laughs</div>
+<div class="card">🧠 Respect</div>
+<div class="card">👑 Rare Person</div>
 </div>
 </section>
 
 <section>
 <h1>Timeline Of Friendship 🚘</h1>
-
 <div class="timeline">
-<div><strong>📅 AUG 27 – First Meet</strong><br>Two random people at college. No one knew a lifetime friendship started that day.</div>
-<div><strong>🤝 Bonding Started</strong><br>Small talks became long talks. Normal days became better days.</div>
-<div><strong>🌄 Ooty Trip</strong><br>Cold breeze, mountain roads, laughter and madness.</div>
-<div><strong>🌿 Anaikatti Ride</strong><br>Roads were scenic. Conversations were elite.</div>
-<div><strong>🏫 VIT Visit</strong><br>New place. Same duo energy.</div>
-<div><strong>🏃 Bunk Legends</strong><br>Classes were skipped. Memories were attended.</div>
-<div><strong>😂 Unlimited Laughs</strong><br>Inside jokes nobody else can understand.</div>
-<div><strong>❤️ Today</strong><br>No longer just friends. Brotherhood.</div>
+<div><strong>📅 AUG 27</strong><br>First Meet at college.</div>
+<div><strong>🤝 Bonding Started</strong><br>Normal talks became long talks.</div>
+<div><strong>🌄 Ooty Trip</strong><br>Cold breeze and madness.</div>
+<div><strong>🌿 Anaikatti Ride</strong><br>Elite roads. Elite talks.</div>
+<div><strong>🏫 VIT Visit</strong><br>Our first hackathon experience was a rollercoaster of intense challenges and enjoyable moments.</div>
+<div><strong>🏃 Bunk Legends</strong><br>Classes skipped. Memories attended.</div>
+<div><strong>❤️ Today</strong><br>Brotherhood.</div>
 </div>
 </section>
 
 <section>
 <h1>Every Picture Has A Story 📸</h1>
-
 <div class="gallery">
-<div class="photo"><img src="pic1.jpeg" loading="lazy"><h3>Confidence Mode</h3><p>Style changes. Aura doesn’t.</p></div>
-<div class="photo"><img src="pic2.jpeg" loading="lazy"><h3>Main Character Shot</h3><p>Standing casually, looking legendary.</p></div>
-<div class="photo"><img src="pic3.jpeg" loading="lazy"><h3>Roadside Brotherhood</h3><p>Cars + roads + memories.</p></div>
-<div class="photo"><img src="pic4.jpeg" loading="lazy"><h3>Blue Bros</h3><p>One frame. Thousand emotions.</p></div>
-<div class="photo"><img src="pic5.jpeg" loading="lazy"><h3>Fortuner Boss Entry</h3><p>Even the car looks proud.</p></div>
-<div class="photo"><img src="pic6.jpeg" loading="lazy"><h3>Chill Meet-up</h3><p>Normal hangout turned into memory.</p></div>
-<div class="photo"><img src="pic7.jpeg" loading="lazy"><h3>Forest Edit</h3><p>Pure cinematic vibes.</p></div>
+<div class="photo"><img src="pic1.jpeg"><h3>Confidence Mode</h3></div>
+<div class="photo"><img src="pic2.jpeg"><h3>Main Character</h3></div>
+<div class="photo"><img src="pic3.jpeg"><h3>Brotherhood</h3></div>
+<div class="photo"><img src="pic4.jpeg"><h3>Blue Bros</h3></div>
+<div class="photo"><img src="pic5.jpeg"><h3>Boss Entry</h3></div>
+<div class="photo"><img src="pic6.jpeg"><h3>Chill Meet</h3></div>
+<div class="photo"><img src="pic7.jpeg"><h3>Forest Edit</h3></div>
 </div>
 </section>
 
 <section>
-<h1>Things I Appreciate About You 🌟</h1>
-<div class="cards">
-<div class="card"><p>You listen when it matters.</p></div>
-<div class="card"><p>You stay calm when others panic.</p></div>
-<div class="card"><p>You support without showing off.</p></div>
-<div class="card"><p>You make every trip memorable.</p></div>
-<div class="card"><p>You respect people genuinely.</p></div>
-<div class="card"><p>You are built different da.</p></div>
+<h1>Dream Garage 🏎️</h1>
+<div class="garageGrid">
+<div class="garageCard">Toyota Fortuner</div>
+<div class="garageCard">BMW M5 CS</div>
+<div class="garageCard">Porsche 911</div>
+<div class="garageCard">Mercedes G63</div>
+<div class="garageCard">Range Rover</div>
+</div>
+</section>
+
+<section>
+<h1>Respect Meter 📈</h1>
+<div class="meterWrap">
+<div class="meterBar" id="meterBar">1000%</div>
 </div>
 </section>
 
@@ -500,19 +513,7 @@ new cars, more trips, bigger wins,
 and every dream becoming reality.
 Keep shining machan.
 </p>
-
 <div class="quote">Some friends become family without blood.</div>
-</section>
-
-<section>
-<h1>Hidden Truth 👀</h1>
-<p>
-No matter where life goes,
-how busy things become,
-or how many years pass...
-our bond stays strong.
-Always.
-</p>
 </section>
 
 <footer>
@@ -529,6 +530,24 @@ if(song.paused){song.play().catch(()=>{});}
 else{song.pause();}
 }
 
+/* loader */
+let load=0;
+let loader=setInterval(()=>{
+load+=2;
+document.getElementById("loadBar").style.width=load+"%";
+document.getElementById("loadText").innerHTML=load+"%";
+if(load>=100){
+clearInterval(loader);
+setTimeout(()=>{
+document.getElementById("loader").style.opacity="0";
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},1000);
+},300);
+}
+},40);
+
+/* race */
 let player=20;
 let enemy=20;
 let raceStarted=false;
@@ -543,28 +562,25 @@ trafficLights();
 }
 
 function trafficLights(){
-setTimeout(()=>{l1.style.background="red";l1.style.boxShadow="0 0 15px red";},400);
-setTimeout(()=>{l2.style.background="orange";l2.style.boxShadow="0 0 15px orange";},1100);
-setTimeout(()=>{l3.style.background="lime";l3.style.boxShadow="0 0 15px lime";beginRace();},1800);
+setTimeout(()=>{l1.style.background="red";},400);
+setTimeout(()=>{l2.style.background="orange";},1100);
+setTimeout(()=>{l3.style.background="lime";beginRace();},1800);
 }
 
 function beginRace(){
 raceStarted=true;
 document.addEventListener("keydown",controlRace);
-track.addEventListener("click",boostMobile);
+track.addEventListener("click",movePlayer);
 enemyAI();
 }
 
 function controlRace(e){
-if(!raceStarted || raceEnded)return;
 if(e.code==="Space" || e.key==="ArrowRight"){movePlayer();}
 }
 
-function boostMobile(){
-if(raceStarted && !raceEnded){movePlayer();}
-}
-
 function movePlayer(){
+if(raceEnded)return;
+
 player+=34;
 speed+=12;
 if(speed>240)speed=240;
@@ -572,91 +588,59 @@ if(speed>240)speed=240;
 speedBox.innerHTML=speed+" KM/H";
 car1.style.left=player+"px";
 
-car1.classList.add("shake");
-setTimeout(()=>{car1.classList.remove("shake");},120);
-
-if(speed>150){car1.classList.add("boost");}
-
 let finish=track.offsetWidth-150;
-
-if(player>=finish){winRace();}
+if(player>=finish)winRace();
 }
 
 function enemyAI(){
 enemyLoop=setInterval(()=>{
-if(raceEnded){
-clearInterval(enemyLoop);
-return;
-}
-
-enemy+=Math.random()*11+7;
-
-let limit=track.offsetWidth-240;
-if(enemy>limit){enemy=limit;}
-
+if(raceEnded)return;
+enemy+=8;
 car2.style.left=enemy+"px";
-
-},140);
+},150);
 }
 
 function winRace(){
 raceEnded=true;
 clearInterval(enemyLoop);
-
 speedBox.innerHTML="🏆 WINNER";
 
-let msg=document.createElement("div");
-msg.className="winMsg";
-msg.innerHTML="🏆 Your birthday starts with a WIN! Enjoy happily Rohhith ❤️";
-raceIntro.appendChild(msg);
-
-launchConfetti();
-
-setTimeout(()=>{
-raceIntro.style.opacity="0";
 setTimeout(()=>{
 raceIntro.style.display="none";
 mainWebsite.style.display="block";
-window.scrollTo(0,0);
 createHearts();
-},1000);
-},2600);
+song.play().catch(()=>{});
+window.scrollTo(0,0);
+},1800);
 }
 
-function launchConfetti(){
-for(let i=0;i<45;i++){
-let c=document.createElement("div");
-c.style.position="fixed";
-c.style.left=Math.random()*100+"vw";
-c.style.top="-20px";
-c.style.width="10px";
-c.style.height="10px";
-c.style.borderRadius="50%";
-c.style.zIndex="99999";
-c.style.background=`hsl(${Math.random()*360},100%,50%)`;
-c.style.transition="2.8s linear";
-document.body.appendChild(c);
-
-setTimeout(()=>{
-c.style.transform=`translateY(${window.innerHeight+40}px) rotate(720deg)`;
-c.style.opacity="0";
-},20);
-
-setTimeout(()=>{c.remove();},3000);
-}
-}
-
+/* hearts */
 function createHearts(){
-for(let i=0;i<18;i++){
+for(let i=0;i<20;i++){
 let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="💙";
 h.style.left=Math.random()*100+"vw";
 h.style.animationDuration=(5+Math.random()*5)+"s";
-h.style.fontSize=(18+Math.random()*18)+"px";
 document.body.appendChild(h);
 }
 }
+
+/* popup */
+setTimeout(()=>{
+document.getElementById("finalPopup").style.display="flex";
+},22000);
+
+function closePopup(){
+document.getElementById("finalPopup").style.display="none";
+}
+
+/* respect bar */
+window.addEventListener("load",()=>{
+setTimeout(()=>{
+document.getElementById("meterBar").style.width="100%";
+},1500);
+});
 </script>
 
 </body>
