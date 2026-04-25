@@ -21,33 +21,33 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* animated background */
+/* Background Glow */
 body::before{
 content:"";
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at 20% 20%,#00ffff22,transparent 20%),
-radial-gradient(circle at 80% 30%,#ffd70022,transparent 20%),
-radial-gradient(circle at 50% 80%,#00ffff18,transparent 20%);
-animation:bgmove 8s infinite alternate;
+radial-gradient(circle at 20% 20%,#00ffff22,transparent 25%),
+radial-gradient(circle at 80% 30%,#ffd70022,transparent 25%),
+radial-gradient(circle at 50% 80%,#00ffff15,transparent 25%);
+animation:bgmove 10s infinite alternate;
 z-index:-2;
 }
 
 @keyframes bgmove{
 from{transform:scale(1);}
-to{transform:scale(1.15);}
+to{transform:scale(1.12);}
 }
 
-/* floating particles */
-.particle{
+/* floating dots */
+.dot{
 position:fixed;
 width:4px;
 height:4px;
 background:#00ffff;
 border-radius:50%;
-opacity:.5;
-animation:float 10s linear infinite;
+opacity:.4;
+animation:float 12s linear infinite;
 z-index:-1;
 }
 
@@ -57,7 +57,7 @@ to{transform:translateY(-10vh);}
 }
 
 section{
-padding:80px 20px;
+padding:95px 20px;
 text-align:center;
 }
 
@@ -76,19 +76,13 @@ font-weight:900;
 color:#00ffff;
 text-shadow:0 0 20px #00ffff,0 0 40px #00ffff;
 margin-bottom:15px;
-animation:pulse 2s infinite alternate;
-}
-
-@keyframes pulse{
-from{transform:scale(1);}
-to{transform:scale(1.03);}
 }
 
 .hero h2{
-font-size:1.2rem;
-margin-bottom:20px;
+font-size:1.25rem;
 color:#ddd;
-min-height:40px;
+margin-bottom:22px;
+min-height:35px;
 }
 
 .hero p{
@@ -106,7 +100,7 @@ background:linear-gradient(45deg,#00ffff,#ffd700);
 color:#000;
 font-weight:800;
 text-decoration:none;
-box-shadow:0 0 25px #00ffff88;
+box-shadow:0 0 20px #00ffff66;
 transition:.3s;
 }
 
@@ -114,19 +108,19 @@ transition:.3s;
 transform:scale(1.05);
 }
 
-.topbtn{
+.music{
 position:fixed;
 top:20px;
 right:20px;
 padding:10px 18px;
 border:none;
-border-radius:30px;
-font-weight:700;
-cursor:pointer;
+border-radius:25px;
 background:#111;
 color:#00ffff;
+font-weight:700;
+cursor:pointer;
+z-index:100;
 box-shadow:0 0 15px #00ffff44;
-z-index:99;
 }
 
 .title{
@@ -136,9 +130,9 @@ margin-bottom:15px;
 }
 
 .sub{
-max-width:850px;
+max-width:900px;
 margin:auto;
-line-height:1.8;
+line-height:1.9;
 color:#aaa;
 }
 
@@ -153,7 +147,7 @@ margin-top:35px;
 
 .card{
 background:#111;
-padding:20px;
+padding:22px;
 border-radius:18px;
 border:1px solid #222;
 box-shadow:0 0 18px #00ffff18;
@@ -162,7 +156,7 @@ transition:.3s;
 
 .card:hover{
 transform:translateY(-8px);
-box-shadow:0 0 35px #00ffff44;
+box-shadow:0 0 28px #00ffff44;
 }
 
 .card img{
@@ -180,37 +174,36 @@ margin-bottom:10px;
 
 .card p{
 color:#bbb;
-line-height:1.7;
+line-height:1.8;
+font-size:.95rem;
+}
+
+.timeline{
+max-width:950px;
+margin:auto;
+margin-top:40px;
+text-align:left;
+}
+
+.step{
+background:#111;
+padding:25px;
+margin-bottom:20px;
+border-left:5px solid #00ffff;
+border-radius:12px;
+box-shadow:0 0 18px #00ffff18;
+}
+
+.step h3{
+color:#ffd700;
+margin-bottom:10px;
 }
 
 .quote{
 margin-top:25px;
-font-size:1.25rem;
+font-size:1.2rem;
 font-weight:700;
 color:#ffd700;
-}
-
-.bar{
-width:100%;
-max-width:700px;
-height:22px;
-background:#111;
-margin:20px auto;
-border-radius:20px;
-overflow:hidden;
-}
-
-.fill{
-height:100%;
-width:96%;
-background:linear-gradient(90deg,#00ffff,#ffd700);
-border-radius:20px;
-animation:load 3s ease;
-}
-
-@keyframes load{
-from{width:0;}
-to{width:96%;}
 }
 
 .footer{
@@ -229,168 +222,242 @@ color:#777;
 
 <body>
 
-<button class="topbtn" onclick="toggleMusic()">🎵 Music</button>
+<button class="music" onclick="toggleMusic()">🎵 Music</button>
 
 <audio id="song" loop>
 <source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- particles -->
-<div class="particle" style="left:10%;animation-delay:0s;"></div>
-<div class="particle" style="left:25%;animation-delay:2s;"></div>
-<div class="particle" style="left:40%;animation-delay:4s;"></div>
-<div class="particle" style="left:60%;animation-delay:1s;"></div>
-<div class="particle" style="left:80%;animation-delay:3s;"></div>
-<div class="particle" style="left:90%;animation-delay:5s;"></div>
+<div class="dot" style="left:10%;animation-delay:0s;"></div>
+<div class="dot" style="left:25%;animation-delay:2s;"></div>
+<div class="dot" style="left:45%;animation-delay:4s;"></div>
+<div class="dot" style="left:60%;animation-delay:1s;"></div>
+<div class="dot" style="left:80%;animation-delay:3s;"></div>
+<div class="dot" style="left:92%;animation-delay:5s;"></div>
 
 <!-- HERO -->
+
 <section class="hero">
 <h1>Happy Birthday Rohhith 🎉</h1>
-
 <h2><span id="typing"></span></h2>
 
 <p>
-Some people enter life and become memories.  
-Some become brothers.  
-You became both.
+Some people come into life and stay as contacts.  
+Some become classmates.  
+Some become friends.  
+And some become family through friendship.
+
+You are one of those rare people.
 </p>
 
-<a href="#about" class="btn">Enter Final Boss Mode 😎</a>
+<a href="#about" class="btn">Open Memories ❤️</a>
 </section>
 
 <!-- FRIENDSHIP -->
+
 <section id="about">
 <div class="title">Our Valuable Friendship 🤝</div>
 
 <p class="sub">
-Not built in one day.  
-Built through laughs, drives, trust, support, and countless moments.
+Friendship is not measured by how long people know each other.  
+It is measured by trust, loyalty, support, comfort, laughter, and memories created together.
+
+With you, every normal day became a better day.
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>🤍 Real Bond</h3>
-<p>No fake vibes. Pure friendship.</p>
+<p>No fake vibes. No acting. Just genuine connection.</p>
 </div>
 
 <div class="card">
-<h3>😂 Memories</h3>
-<p>Random moments became golden memories.</p>
+<h3>😂 Endless Laughs</h3>
+<p>Every meet-up had comedy without planning it.</p>
 </div>
 
 <div class="card">
-<h3>🧠 Respect</h3>
-<p>Smart mind. Calm heart.</p>
+<h3>🧠 Mutual Respect</h3>
+<p>Good hearts recognize good hearts.</p>
 </div>
 
 <div class="card">
-<h3>👑 Rare One</h3>
-<p>People like you are uncommon.</p>
+<h3>👑 Brotherhood</h3>
+<p>Started as friends. Became brothers.</p>
+</div>
+
+</div>
+</section>
+
+<!-- TIMELINE -->
+
+<section>
+<div class="title">Timeline Of Friendship 🕰️</div>
+
+<p class="sub">
+Every strong friendship has chapters.  
+This is ours.
+</p>
+
+<div class="timeline">
+
+<div class="step">
+<h3>📍 First Meet — August 27</h3>
+<p>
+A regular college day that didn’t feel important at the time.  
+But looking back, it became the day a valuable friendship quietly started.
+</p>
+</div>
+
+<div class="step">
+<h3>🤝 Bond Started Growing</h3>
+<p>
+From casual conversations to inside jokes, from classmates to comfort zone people.  
+The bond built naturally without forcing anything.
+</p>
+</div>
+
+<div class="step">
+<h3>🏔️ First Trip — Ooty</h3>
+<p>
+Trips reveal real friendships.  
+Laughs, chaos, photos, roadside moments, random talks, and memories that still replay.
+</p>
+</div>
+
+<div class="step">
+<h3>🌿 Anaikatti Adventures</h3>
+<p>
+Fresh air, scenic roads, relaxed vibes and unforgettable moments.  
+Some places become special because of the people present there.
+</p>
+</div>
+
+<div class="step">
+<h3>🎓 VIT Memories</h3>
+<p>
+Another chapter added.  
+New place, same friendship energy.
+</p>
+</div>
+
+<div class="step">
+<h3>🏃 Bunking Class & Wandering</h3>
+<p>
+Some of the funniest memories were never inside classrooms.  
+Unexpected walks, random tea breaks, pointless roaming, and priceless laughs.
+</p>
+</div>
+
+<div class="step">
+<h3>😂 Countless Laughs</h3>
+<p>
+The kind of laughs where nothing serious happened, but everything became memorable.
+</p>
+</div>
+
+<div class="step">
+<h3>❤️ Today — Brotherhood</h3>
+<p>
+Now it’s beyond friendship.  
+A bond built on trust, memories, loyalty, and genuine care.
+</p>
 </div>
 
 </div>
 </section>
 
 <!-- PHOTOS -->
+
 <section>
-<div class="title">Legend Gallery 📸</div>
+<div class="title">Every Picture Has A Story 📸</div>
 
 <div class="grid">
 
 <div class="card">
 <img src="pic1.jpeg">
 <h3>Confidence In Silence</h3>
-<p>Even simple moments look premium.</p>
+<p>Even ordinary places look stylish when confidence enters the frame.</p>
 </div>
 
 <div class="card">
 <img src="pic2.jpeg">
 <h3>Main Character Energy</h3>
-<p>Nature + style = elite frame.</p>
+<p>Calm pose, clean style, natural setting — effortless aura.</p>
 </div>
 
 <div class="card">
 <img src="pic3.jpeg">
-<h3>Road Trip Memories</h3>
-<p>Drives, talks, laughs and vibes.</p>
+<h3>Roadside Conversations</h3>
+<p>Trips, talks, plans, jokes and memories parked forever.</p>
 </div>
 
 <div class="card">
 <img src="pic4.jpeg">
 <h3>Brothers By Choice</h3>
-<p>Some bonds are stronger than blood.</p>
+<p>Some people become family without sharing blood.</p>
 </div>
 
 <div class="card">
 <img src="pic5.jpeg">
-<h3>Machine Meets Vision</h3>
-<p>Cars suit people with ambition.</p>
+<h3>Cars & Class</h3>
+<p>Machines suit people with taste and ambition.</p>
 </div>
 
 <div class="card">
 <img src="pic6.jpeg">
-<h3>Simple Days</h3>
-<p>Right people make normal days special.</p>
+<h3>Simple Day, Great Memory</h3>
+<p>Right people turn casual moments into keepsakes.</p>
 </div>
 
 <div class="card">
 <img src="pic7.jpeg">
 <h3>Quiet Strength</h3>
-<p>Calm outside, strong inside.</p>
+<p>Peaceful people often carry the strongest minds.</p>
 </div>
 
 </div>
+
+<p class="quote">Photos capture faces. Friendship captures life.</p>
 </section>
 
-<!-- SUCCESS METER -->
+<!-- MESSAGE -->
+
 <section>
-<div class="title">Success Speedometer 🚀</div>
-<p class="sub">Progress toward dream life:</p>
-
-<div class="bar">
-<div class="fill"></div>
-</div>
-
-<p class="quote">96% Loaded. Greatness Incoming.</p>
-</section>
-
-<!-- SECRET -->
-<section>
-<div class="title">Hidden Message 🎁</div>
-
-<a class="btn" onclick="secretMsg()">Open Secret</a>
-</section>
-
-<!-- FINAL -->
-<section>
-<div class="title">Birthday Wish 🎂</div>
+<div class="title">Message To My Brother 🎂</div>
 
 <p class="sub">
-May you get success, peace, health, money,
-dream cars, and happiness beyond expectations.
+Thank you for every laugh, every trip, every support, every random plan,
+every time you were there, and every memory we never expected to become special.
+
+May life reward you with success, happiness, peace, dream cars, good health,
+stronger opportunities, and everything your heart truly deserves.
 </p>
 
 <p class="quote">
+Happy Birthday Rohhith ❤️  
 Stay classy. Stay blessed. Keep winning.
 </p>
 </section>
 
 <section>
 <div class="title">From Baddies 😎</div>
-<p class="sub">Lifetime friendship only.</p>
+<p class="sub">
+Started in college. Built for lifetime.
+</p>
 </section>
 
 <div class="footer">
-Made with respect for Rohhith ❤️
+Made with love and respect 🤝
 </div>
 
 <script>
-let txt="A Brother. A Listener. A Real One. A Lifetime Friend.";
+let text="A Brother. A Listener. A Real One. A Lifetime Friend.";
 let i=0;
 function type(){
-if(i<txt.length){
-document.getElementById("typing").innerHTML += txt.charAt(i);
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
 i++;
 setTimeout(type,55);
 }
@@ -399,15 +466,8 @@ type();
 
 function toggleMusic(){
 let song=document.getElementById("song");
-if(song.paused){
-song.play();
-}else{
-song.pause();
-}
-}
-
-function secretMsg(){
-alert("No matter where life goes, I’ll always value this friendship da macha ❤️");
+if(song.paused){song.play();}
+else{song.pause();}
 }
 </script>
 
