@@ -32,6 +32,12 @@ background:
 radial-gradient(circle at top left,#00ffff22,transparent 25%),
 radial-gradient(circle at bottom right,#ff00ff22,transparent 25%);
 z-index:-1;
+animation:bgmove 8s linear infinite alternate;
+}
+
+@keyframes bgmove{
+0%{filter:hue-rotate(0deg);}
+100%{filter:hue-rotate(40deg);}
 }
 
 /* ================= GAME ================= */
@@ -45,6 +51,7 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 z-index:9999;
+transition:1s;
 }
 
 #gameTitle{
@@ -102,6 +109,7 @@ background-size:100% 100%,140px 6px;
 background-position:center center,0 157px;
 background-repeat:no-repeat,repeat-x;
 animation:roadMove .12s linear infinite;
+box-shadow:0 0 20px #00ffff33;
 }
 
 @keyframes roadMove{
@@ -138,6 +146,10 @@ font-size:1rem;
 box-shadow:0 0 18px #00ffff;
 }
 
+.btn:hover{
+transform:scale(1.05);
+}
+
 #raceText{
 margin-top:15px;
 color:#aaa;
@@ -147,6 +159,12 @@ color:#aaa;
 
 #mainPage{
 display:none;
+animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 section{
@@ -159,6 +177,12 @@ font-size:4rem;
 font-weight:900;
 color:#00ffff;
 text-shadow:0 0 25px #00ffff;
+animation:pulse 2s infinite alternate;
+}
+
+@keyframes pulse{
+from{transform:scale(1);}
+to{transform:scale(1.03);}
 }
 
 .hero p{
@@ -180,6 +204,11 @@ color:#000;
 font-weight:800;
 text-decoration:none;
 box-shadow:0 0 20px #00ffff;
+transition:.3s;
+}
+
+.glowBtn:hover{
+transform:scale(1.06);
 }
 
 .cards{
@@ -195,6 +224,12 @@ padding:30px;
 border-radius:20px;
 border:1px solid #222;
 box-shadow:0 0 20px #00ffff22;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px #00ffff88;
 }
 
 .card h3{
@@ -215,6 +250,12 @@ background:#111;
 border-left:4px solid #00ffff;
 margin-bottom:20px;
 border-radius:12px;
+transition:.3s;
+}
+
+.timeline div:hover{
+transform:translateX(8px);
+box-shadow:0 0 20px #00ffff22;
 }
 
 .gallery{
@@ -229,6 +270,11 @@ background:#111;
 padding:15px;
 border-radius:18px;
 box-shadow:0 0 15px #00ffff22;
+transition:.4s;
+}
+
+.photo:hover{
+transform:translateY(-8px) scale(1.02);
 }
 
 .photo img{
@@ -262,6 +308,7 @@ display:none;
 margin-top:15px;
 font-size:1.1rem;
 color:#ffd700;
+animation:fadeIn 1s;
 }
 
 @media(max-width:768px){
@@ -272,12 +319,12 @@ color:#ffd700;
 </head>
 <body>
 
-<!-- ================= SONG ================= -->
-<audio id="song" loop>
+<!-- SONG -->
+<audio id="song" loop preload="auto">
 <source src="Bang-Bang-Bang.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ================= GAME ================= -->
+<!-- GAME -->
 
 <div id="gameScreen">
 
@@ -303,7 +350,7 @@ color:#ffd700;
 
 </div>
 
-<!-- ================= MAIN PAGE ================= -->
+<!-- MAIN PAGE -->
 
 <div id="mainPage">
 
@@ -341,36 +388,17 @@ You are that rare kind of friend.
 
 <div class="timeline">
 
-<div>
-<strong>AUG 27 - First Meet</strong><br>
-Two random people at college. Nobody knew a lifetime friendship started that day.
-</div>
+<div><strong>AUG 27 - First Meet</strong><br>Two random people at college. Nobody knew a lifetime friendship started that day.</div>
 
-<div>
-<strong>Bonding Started</strong><br>
-Conversations became trust. Normal talks became daily routine.
-</div>
+<div><strong>Bonding Started</strong><br>Conversations became trust. Normal talks became daily routine.</div>
 
-<div>
-<strong>Trips Era</strong><br>
-First Ooty 🌄 → Anaikatti 🌿 → VIT 🚘  
-Roads changed, but company stayed elite.
-</div>
+<div><strong>Trips Era</strong><br>First Ooty 🌄 → Anaikatti 🌿 → VIT 🚘 Roads changed, but company stayed elite.</div>
 
-<div>
-<strong>Bunk Legends</strong><br>
-Classes were missed. Memories were attended.
-</div>
+<div><strong>Bunk Legends</strong><br>Classes were missed. Memories were attended.</div>
 
-<div>
-<strong>Countless Laughs 😂</strong><br>
-Inside jokes nobody else can understand.
-</div>
+<div><strong>Countless Laughs 😂</strong><br>Inside jokes nobody else can understand.</div>
 
-<div>
-<strong>Today ❤️</strong><br>
-Not just friends anymore. Brotherhood.
-</div>
+<div><strong>Today ❤️</strong><br>Not just friends anymore. Brotherhood.</div>
 
 </div>
 </section>
@@ -380,47 +408,19 @@ Not just friends anymore. Brotherhood.
 
 <div class="gallery">
 
-<div class="photo">
-<img src="pic1.jpeg">
-<h4>The Bald Look 😂</h4>
-<p>Confidence level max. Style never drops.</p>
-</div>
+<div class="photo"><img src="pic1.jpeg"><h4>The Bald Look 😂</h4><p>Confidence level max. Style never drops.</p></div>
 
-<div class="photo">
-<img src="pic2.jpeg">
-<h4>Park Hero 🌿</h4>
-<p>Standing like a movie intro shot.</p>
-</div>
+<div class="photo"><img src="pic2.jpeg"><h4>Park Hero 🌿</h4><p>Standing like a movie intro shot.</p></div>
 
-<div class="photo">
-<img src="pic3.jpeg">
-<h4>Swift Days 🚘</h4>
-<p>Cars + roads + friendship = elite combo.</p>
-</div>
+<div class="photo"><img src="pic3.jpeg"><h4>Swift Days 🚘</h4><p>Cars + roads + friendship = elite combo.</p></div>
 
-<div class="photo">
-<img src="pic4.jpeg">
-<h4>Brother Frame 💙</h4>
-<p>One picture. Thousand memories.</p>
-</div>
+<div class="photo"><img src="pic4.jpeg"><h4>Brother Frame 💙</h4><p>One picture. Thousand memories.</p></div>
 
-<div class="photo">
-<img src="pic5.jpeg">
-<h4>Fortuner Boss 😎</h4>
-<p>Even the car knows who owns the vibe.</p>
-</div>
+<div class="photo"><img src="pic5.jpeg"><h4>Fortuner Boss 😎</h4><p>Even the car knows who owns the vibe.</p></div>
 
-<div class="photo">
-<img src="pic6.jpeg">
-<h4>Cafe Talks ☕</h4>
-<p>Normal meet-up turned into core memory.</p>
-</div>
+<div class="photo"><img src="pic6.jpeg"><h4>Cafe Talks ☕</h4><p>Normal meet-up turned into core memory.</p></div>
 
-<div class="photo">
-<img src="pic7.jpeg">
-<h4>Forest Edit 🌲</h4>
-<p>Main character energy detected.</p>
-</div>
+<div class="photo"><img src="pic7.jpeg"><h4>Forest Edit 🌲</h4><p>Main character energy detected.</p></div>
 
 </div>
 
@@ -444,19 +444,21 @@ let raceStarted=false;
 let raceEnded=false;
 let enemyRun;
 
-/* Start Race */
 function startRace(){
 
 document.querySelector(".btn").style.display="none";
 
 const song=document.getElementById("song");
 song.volume=1;
+song.play().then(()=>{}).catch(()=>{});
+
+setTimeout(()=>{
 song.play().catch(()=>{});
+},1000);
 
 traffic();
 }
 
-/* Countdown */
 function traffic(){
 
 setTimeout(()=>countdown.innerHTML="3",500);
@@ -469,7 +471,6 @@ beginRace();
 },2900);
 }
 
-/* Race */
 function beginRace(){
 
 raceStarted=true;
@@ -477,7 +478,7 @@ raceStarted=true;
 enemyRun=setInterval(()=>{
 
 if(!raceEnded){
-enemyPos += Math.random()*10+8;
+enemyPos += Math.random()*9+8;
 enemyCar.style.left=enemyPos+"px";
 }
 
@@ -485,7 +486,6 @@ enemyCar.style.left=enemyPos+"px";
 
 }
 
-/* Accelerate */
 function accelerate(power=1){
 
 if(!raceStarted || raceEnded)return;
@@ -501,7 +501,6 @@ speedometer.innerHTML=Math.floor(speed)+" KM/H";
 checkWin();
 }
 
-/* Nitro */
 function nitroBoost(){
 
 if(nitro<=0)return;
@@ -514,7 +513,6 @@ nitroFill.style.width=nitro+"%";
 accelerate(2.7);
 }
 
-/* Win */
 function checkWin(){
 
 if(playerPos > window.innerWidth*0.76){
@@ -538,7 +536,6 @@ window.scrollTo(0,0);
 }
 }
 
-/* Controls */
 document.addEventListener("keydown",(e)=>{
 
 if(
